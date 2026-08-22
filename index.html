@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulado Seminários IPB 2027 · Preparatório para o Processo de Admissão</title>
+<style>
+:root{
+  --paper:#f2f1ec; --paper2:#e9e7df; --ink:#1a2530; --ink2:#4a5763; --line:#d3cdbf;
+  --navy:#123249; --navy-d:#0d2436; --navy-l:#1d4a68;
+  --gold:#b1832f; --gold-l:#d9b45e; --amber-bg:#f6efdd;
+  --ipb:#d9531e; --ipb-bg:#fbe6da;
+  --good:#1c6b3c; --good-bg:#e2f0e6; --bad:#a81f16; --bad-bg:#f7e3e1;
+  --bi:#2c6e6a; --sf:#5a3f86; --pt:#1d4a68; --lt:#8a5a1e; --en:#8a2f4a;
+  --sh:0 1px 3px rgba(20,40,60,.10),0 6px 18px rgba(20,40,60,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--paper); color:var(--ink); line-height:1.5; -webkit-text-size-adjust:100%;
+}
+.serif{font-family:Georgia,"Times New Roman",Cambria,serif}
+.mono{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+a{color:var(--navy-l)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+button{font:inherit;cursor:pointer;border:0;border-radius:9px;padding:10px 15px;font-weight:600;transition:filter .12s,transform .04s}
+button:active{transform:translateY(1px)}
+button:focus-visible{outline:3px solid var(--gold-l);outline-offset:2px}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{filter:brightness(1.12)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{filter:brightness(1.08)}
+.btn-ipb{background:var(--ipb);color:#fff}
+.btn-ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.btn-ghost:hover{background:#fff}
+.btn-soft{background:var(--paper2);color:var(--ink)}
+.btn-soft:hover{background:#ded9cc}
+.btn-danger{background:var(--bad-bg);color:var(--bad)}
+.dica-box{margin-top:12px;padding:12px 14px;background:var(--amber-bg);border-left:4px solid var(--gold);border-radius:8px;display:flex;gap:10px;align-items:flex-start;font-size:.95rem;color:#5c4610;line-height:1.5}
+.dica-tag{font-weight:700;color:#7a5a12;white-space:nowrap;font-size:.82rem;letter-spacing:.02em;padding-top:1px}
+.fonte-box{margin-top:10px;padding:12px 14px;background:#eef3f6;border-left:4px solid var(--navy-l);border-radius:8px;display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#22404f;line-height:1.5}
+.fonte-tag{font-weight:700;color:var(--navy);white-space:nowrap;font-size:.82rem;padding-top:1px}
+/* painel de ajudas (lifelines estilo Show do Milhão) */
+.ajudas{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ajudas-lb{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);font-weight:700;margin-right:2px}
+.lifeline{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:82px;padding:8px 12px;border-radius:11px;background:#fff;border:1.5px solid var(--line);color:var(--navy);line-height:1.15}
+.lifeline b{font-size:.9rem;font-weight:700}
+.lifeline small{font-size:.66rem;color:var(--ink2);letter-spacing:.02em}
+.lifeline:hover{border-color:var(--gold-l);background:#fffdf7;transform:translateY(-1px)}
+.lifeline.on{background:var(--amber-bg);border-color:var(--gold)}
+.lifeline.gold{background:linear-gradient(180deg,#c8992f,#a9781f);border-color:#a9781f;color:#fff}
+.lifeline.gold small{color:#f3e6c4}
+.lifeline.gold:hover{filter:brightness(1.08);background:linear-gradient(180deg,#c8992f,#a9781f)}
+.lifeline.used{opacity:.45;cursor:not-allowed;background:var(--paper2)}
+.lifeline.used:hover{transform:none;border-color:var(--line)}
+.alt.elim{opacity:.42;text-decoration:line-through;cursor:not-allowed;background:repeating-linear-gradient(45deg,#f4f2ec,#f4f2ec 8px,#eceae2 8px,#eceae2 16px)}
+.alt.elim .let{background:var(--line);color:#fff}
+.btn-hint{background:var(--amber-bg);color:#7a5a12;border:1px solid var(--gold-l)}
+.btn-hint:hover{background:#efe4c6}
+.btn-hint.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.revelou-tag{align-self:center;font-size:.78rem;color:var(--ink2);font-style:italic}
+/* card de gamificação */
+.gamif{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#f2ede1;border-radius:14px;padding:18px 20px;box-shadow:var(--sh);border:1px solid var(--gold);display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;margin-bottom:18px}
+.gamif-hero{display:flex;align-items:center;gap:14px}
+.gamif-big{font-family:Georgia,serif;font-size:2.6rem;font-weight:700;color:var(--gold-l);line-height:1}
+.gamif-big span{font-size:1.2rem;color:#9fb2c0}
+.gamif-cap{font-size:.9rem;font-weight:700;line-height:1.25}
+.gamif-cap small{font-weight:400;color:#a9bccb;font-size:.76rem}
+.gamif-aids{display:flex;gap:10px;flex-wrap:wrap}
+.gamif-aids .aid{background:rgba(255,255,255,.07);border:1px solid rgba(217,180,94,.35);border-radius:10px;padding:7px 13px;text-align:center;min-width:62px}
+.gamif-aids .aid b{display:block;font-size:1.25rem;color:#fff;font-family:Georgia,serif}
+.gamif-aids .aid small{font-size:.68rem;color:#c4d2dd;letter-spacing:.02em}
+.gamif-msg{flex:1;min-width:200px;font-size:.9rem;color:#e7dfce;font-style:italic;border-left:3px solid var(--gold);padding-left:12px}
+/* conta / login */
+.head-in{display:flex;flex-direction:column;gap:8px}
+.acct{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.acct-note{font-size:.74rem;color:#c9d6e0;opacity:.85}
+.acct-sync{font-size:.74rem;color:var(--gold-l)}
+.acct-name{font-size:.82rem;color:#f4f1ea;font-weight:600}
+.acct-av{width:22px;height:22px;border-radius:50%;border:1px solid var(--gold-l)}
+.acct-link{background:transparent;border:0;color:#c9d6e0;font-size:.76rem;text-decoration:underline;padding:2px 3px;cursor:pointer}
+.acct-link:hover{color:#fff}
+.acct-google{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#3c4043;border:1px solid #dadce0;border-radius:8px;padding:6px 12px;font-size:.82rem;font-weight:600}
+.acct-google:hover{background:#f7f8f8}
+.acct-google svg{display:block}
+/* modal privacidade */
+.modal-bg{position:fixed;inset:0;background:rgba(10,20,30,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
+.modal-bg.show{display:flex}
+.modal{background:var(--paper);border-radius:14px;max-width:560px;width:100%;padding:22px 24px;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:88vh;overflow:auto;border-top:4px solid var(--gold)}
+.modal h3{font-size:1.2rem;margin-bottom:8px}
+.priv-body{font-size:.9rem;color:var(--ink);line-height:1.55}
+.priv-body p{margin:8px 0}
+.priv-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+.btn-sm{padding:7px 11px;font-size:.86rem;border-radius:8px}
+.hidden{display:none !important}
+
+/* Header */
+header{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-d) 100%);color:#f4f1ea;box-shadow:var(--sh)}
+.head-in{padding:16px 0 18px}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-seal{flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.brand-seal svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+.brand-name{font-size:1.7rem;color:#fff;letter-spacing:.01em;line-height:1.08;margin:2px 0}
+.brand-sub{font-size:.82rem;color:#c9d4dc;letter-spacing:.01em}
+.eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);font-weight:700;margin-bottom:5px}
+header h1 .yr{color:var(--gold-l)}
+.epigraph{margin-top:12px;font-style:italic;font-size:.9rem;color:#c9d4dc;font-family:Georgia,serif;border-top:1px solid rgba(217,180,94,.22);padding-top:11px}
+.epigraph span{color:#8fa6b4;font-style:normal;font-size:.8rem}
+.sticky-bar{position:sticky;top:0;z-index:20;background:var(--navy-d);color:#eaf1f5;border-bottom:2px solid var(--gold)}
+.sticky-in{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:9px 0;font-size:.85rem}
+.sticky-in .grow{flex:1}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#173b53;border-radius:99px;padding:4px 11px;font-weight:600}
+.chip b{font-variant-numeric:tabular-nums}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.timer{font-family:ui-monospace,monospace;font-size:1.05rem;font-weight:700;letter-spacing:.03em;background:#0a1c2a;padding:4px 12px;border-radius:8px;color:#fff}
+.timer.warn{color:#ffcf9e}
+.timer.crit{color:#ff9d8a;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+
+/* Layout */
+main{padding:22px 0 90px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--sh)}
+.card + .card{margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* Home */
+.hero-sub{color:var(--ink2);max-width:70ch}
+.section-label{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:2px 0 10px}
+.opt-row{display:flex;flex-wrap:wrap;gap:8px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:6px;background:var(--paper2);padding:5px;border-radius:11px}
+.seg button{background:transparent;color:var(--ink2);border-radius:8px;padding:9px 13px;font-weight:600}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.mode-cards{grid-template-columns:1fr}}
+.mode{border:2px solid var(--line);border-radius:12px;padding:15px;cursor:pointer;background:#fff}
+.mode.on{border-color:var(--navy);background:#f8fbfd}
+.mode h3{font-size:1.05rem;margin-bottom:4px}
+.mode p{margin:0;font-size:.86rem;color:var(--ink2)}
+.check{display:flex;gap:9px;align-items:flex-start;margin-top:12px;font-size:.9rem;color:var(--ink2)}
+.check input{margin-top:3px;transform:scale(1.15)}
+.start-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+
+.crit-box{background:var(--amber-bg);border:1px solid #e6d29b;border-radius:12px;padding:14px 16px;margin-top:16px}
+.crit-box h3{font-size:1rem;color:#6d5216;margin-bottom:6px}
+.crit-box ul{margin:6px 0 0;padding-left:20px;font-size:.88rem;color:#5c4a1e}
+.crit-box li{margin:3px 0}
+
+.hub-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+
+/* Question */
+.q-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.q-count{font-weight:700;color:var(--navy);font-family:Georgia,serif;font-size:1.05rem}
+.q-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.7rem;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:99px;text-transform:uppercase}
+.tag-area{color:#fff}
+.tag-dif{background:var(--paper2);color:var(--ink2)}
+.tag-topic{background:#eef1f4;color:var(--navy);text-transform:none;letter-spacing:0;font-weight:600}
+.q-body{border-left:5px solid var(--navy);padding-left:16px;margin-top:10px}
+.q-enun{font-size:1.06rem;font-family:Georgia,serif;white-space:pre-wrap;margin-bottom:14px}
+.alts{display:flex;flex-direction:column;gap:9px}
+.alt{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:#fff}
+.alt:hover{border-color:var(--navy-l);background:#f8fbfd}
+.alt.sel{border-color:var(--navy);background:#eef5fa;box-shadow:inset 0 0 0 1px var(--navy)}
+.alt .let{font-weight:800;color:var(--navy);font-family:Georgia,serif;min-width:20px}
+.alt.ok{border-color:var(--good);background:var(--good-bg)}
+.alt.no{border-color:var(--bad);background:var(--bad-bg)}
+.alt.ok .let{color:var(--good)}.alt.no .let{color:var(--bad)}
+.alt input{display:none}
+.q-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center}
+.q-actions .grow{flex:1}
+.mark-flag.on{background:var(--gold);color:#fff}
+
+.exp{margin-top:14px;border-radius:11px;padding:14px 15px;background:#f7f8f6;border:1px solid var(--line)}
+.exp .verdict{font-weight:800;font-family:Georgia,serif;font-size:1rem;margin-bottom:6px}
+.exp .verdict.ok{color:var(--good)}.exp .verdict.no{color:var(--bad)}
+.exp .line{font-size:.88rem;margin:3px 0;color:var(--ink2)}
+.exp .expl{margin-top:8px;font-size:.94rem;color:var(--ink)}
+.exp .ref{margin-top:9px;font-size:.83rem;color:var(--navy);font-weight:600}
+.exp .ref .k{color:var(--gold);font-weight:700}
+
+/* Nav grid */
+.nav-panel{margin-top:16px}
+.nav-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.78rem;color:var(--ink2);margin:4px 0 10px}
+.nav-legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:15px;height:15px;border-radius:5px;border:1.5px solid var(--line);display:inline-block}
+.nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px}
+.nav-grid button{padding:0;height:38px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--ink2);font-weight:700;font-size:.82rem;position:relative}
+.nav-grid button.answered{background:#dbe9f2;border-color:#a9c8dd;color:var(--navy)}
+.nav-grid button.current{outline:3px solid var(--navy);outline-offset:1px;color:var(--navy)}
+.nav-grid button.marked::after{content:"";position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.nav-grid button.ok{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.nav-grid button.no{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.nav-grid button.blank{background:#fff}
+
+/* Results */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:8px}
+.metric{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:12px}
+.metric .v{font-size:1.7rem;font-weight:800;font-family:Georgia,serif;line-height:1;font-variant-numeric:tabular-nums}
+.metric .l{font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-top:5px}
+.metric.good .v{color:var(--good)}.metric.bad .v{color:var(--bad)}.metric.navy .v{color:var(--navy)}
+.score-hero{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.score-ring{--p:0;width:118px;height:118px;border-radius:50%;flex:none;
+  background:conic-gradient(var(--gold) calc(var(--p)*1%), var(--paper2) 0);
+  display:grid;place-items:center;position:relative}
+.score-ring::before{content:"";position:absolute;inset:11px;border-radius:50%;background:#fff}
+.score-ring .rv{position:relative;text-align:center}
+.score-ring .rv b{font-size:1.6rem;font-family:Georgia,serif;font-variant-numeric:tabular-nums;display:block}
+.score-ring .rv small{font-size:.7rem;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+
+.disc-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.92rem}
+.disc-table th,.disc-table td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+.disc-table th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+.disc-table td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.bar{height:9px;border-radius:99px;background:var(--paper2);overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%;border-radius:99px}
+.verd-badge{display:inline-block;padding:5px 12px;border-radius:99px;font-weight:800;font-size:.9rem}
+.verd-badge.ap{background:var(--good-bg);color:var(--good)}
+.verd-badge.re{background:var(--bad-bg);color:var(--bad)}
+.crit-list{list-style:none;padding:0;margin:10px 0 0}
+.crit-list li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.crit-list .ic{font-weight:800;flex:none;width:20px}
+.crit-list .ic.ok{color:var(--good)}.crit-list .ic.no{color:var(--bad)}.crit-list .ic.na{color:var(--ink2)}
+
+.err-box{background:var(--ipb-bg);border:1px solid #f0c3ac;border-radius:12px;padding:14px 16px}
+.err-box h3{color:#9c3d16;font-size:1rem;margin-bottom:6px}
+.pri{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:6px;margin-right:8px}
+.pri.alta{background:#f7d9cc;color:#9c3413}.pri.media{background:#f6ecc9;color:#7a611a}.pri.baixa{background:#dfe9df;color:#3f5f42}
+
+/* Coverage */
+.cov-legend{font-size:.85rem;color:var(--ink2);margin-bottom:8px}
+.cov-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.cov-table th,.cov-table td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.cov-table th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);position:sticky;top:96px;background:#fff}
+.cov-qn{font-family:ui-monospace,monospace;font-size:.82rem;color:var(--navy)}
+.area-pill{font-size:.72rem;font-weight:700;color:#fff;padding:2px 8px;border-radius:99px}
+
+/* Redacao */
+.red-prop{border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px;background:#fff}
+.red-prop h3{font-size:1.08rem;color:var(--navy)}
+.red-motiv{background:var(--amber-bg);border-left:4px solid var(--gold);border-radius:8px;padding:12px 14px;margin:10px 0;white-space:pre-wrap;font-family:Georgia,serif;font-size:.94rem}
+.red-cmd{font-size:.92rem;color:var(--ink);margin-bottom:10px}
+textarea{width:100%;min-height:220px;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;line-height:1.6;resize:vertical;background:#fffdf8}
+.red-meta{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink2);margin-top:6px}
+
+/* History */
+.hist-item{border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-top:10px;background:#fff}
+.hist-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline}
+.hist-top .d{font-size:.82rem;color:var(--ink2)}
+.hist-top .s{font-family:Georgia,serif;font-weight:800;font-size:1.15rem}
+.hist-discs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:.78rem}
+.hist-discs span{background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+.spark{display:flex;align-items:flex-end;gap:4px;height:46px;margin-top:6px}
+.spark i{flex:1;background:var(--navy-l);border-radius:3px 3px 0 0;min-height:3px;opacity:.85}
+
+.empty{color:var(--ink2);font-style:italic;padding:8px 0}
+footer{border-top:1px solid var(--line);color:var(--ink2);font-size:.8rem;padding:26px 0 48px;margin-top:34px}
+.foot-brand{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
+.foot-brand span{color:var(--gold)}
+.foot-disc{margin:0 0 16px;line-height:1.55;max-width:80ch}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;font-size:.82rem}
+.foot-credit a{color:var(--gold);font-weight:700;text-decoration:none}
+.foot-credit a:hover{text-decoration:underline}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--navy-d);color:#fff;padding:11px 18px;border-radius:10px;box-shadow:var(--sh);z-index:60;font-size:.9rem;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+
+/* Trilhas de estudo (presets) */
+.intro-card{background:linear-gradient(135deg,#ffffff 0%,#f7f9fb 100%)}
+.tracks-head{margin:22px 2px 12px}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.track{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--sh);border-top:4px solid var(--navy);transition:transform .12s,box-shadow .12s}
+.track:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(20,40,60,.13)}
+.track-gold{border-top-color:var(--gold)}
+.track-teal{border-top-color:var(--bi)}
+.track-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.track-emoji{font-size:1.5rem;line-height:1}
+.track-tag{font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);background:var(--paper2);padding:4px 9px;border-radius:99px}
+.track-nome{font-size:1.18rem;color:var(--navy);margin-bottom:6px}
+.track-gold .track-nome{color:#8a6a1a}
+.track-resumo{font-size:.9rem;color:var(--ink2);line-height:1.5;margin:0 0 10px}
+.track-porque{font-size:.82rem;color:var(--ink);background:var(--amber-bg);border-left:3px solid var(--gold);border-radius:6px;padding:8px 10px;line-height:1.45;margin-bottom:14px}
+.track-btn{margin-top:auto;width:100%;text-align:center;padding:11px 14px;font-size:.98rem}
+.track-gold .track-btn{background:var(--gold)}
+.track-gold .track-btn:hover{filter:brightness(1.08)}
+.mini-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);font-weight:700;margin-bottom:8px}
+
+/* ==== Responsivo (celular) ==== */
+@media(max-width:820px){ .tracks{grid-template-columns:1fr} }
+@media(max-width:640px){
+  .wrap{padding:0 13px}
+  .brand-name{font-size:1.28rem}
+  .brand-seal svg{width:36px;height:36px}
+  .brand{gap:12px}
+  .card{padding:16px}
+  main{padding:16px 0 84px}
+  .hero-sub{font-size:.92rem}
+  .seg{display:flex;flex-wrap:nowrap;overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{white-space:nowrap;flex:0 0 auto;padding:9px 12px;font-size:.88rem}
+  .sticky-in{flex-wrap:nowrap;overflow-x:auto;gap:8px;font-size:.8rem;scrollbar-width:none}
+  .sticky-in::-webkit-scrollbar{display:none}
+  .sticky-in .grow{display:none}
+  .chip{padding:4px 9px}
+  .timer{font-size:.98rem;padding:4px 10px}
+  .start-row .btn-primary{width:100%}
+  .gamif-big{font-size:2.2rem}
+}
+@media(max-width:400px){ .brand-name{font-size:1.12rem} .brand-sub{font-size:.76rem} .track-nome{font-size:1.1rem} }
+
+@media print{
+  header,.sticky-bar,.nav-panel,.q-actions,footer,.no-print{display:none !important}
+  .card{box-shadow:none;break-inside:avoid}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head-in">
+    <div class="acct no-print" id="acctBar"></div>
+    <div class="brand">
+      <div class="brand-seal" aria-hidden="true">
+        <svg viewBox="0 0 44 44" width="44" height="44">
+          <circle cx="22" cy="22" r="21" fill="none" stroke="var(--gold-l)" stroke-width="1.4"/>
+          <circle cx="22" cy="22" r="17.5" fill="none" stroke="var(--gold)" stroke-width="0.8" opacity="0.6"/>
+          <path d="M22 13c-3-2.2-6.6-2.2-9.2-1.1v14.7c2.6-1.1 6.2-1.1 9.2 1.1 3-2.2 6.6-2.2 9.2-1.1V11.9C28.6 10.8 25 10.8 22 13Z" fill="none" stroke="var(--gold-l)" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="22" y1="13" x2="22" y2="27.7" stroke="var(--gold-l)" stroke-width="1.2"/>
+          <path d="M22 30.5v3.5M18.5 32.2h7" stroke="var(--gold-l)" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="eyebrow">Junta de Educação Teológica · Igreja Presbiteriana do Brasil</div>
+        <h1 class="serif brand-name">Simulado Seminários <span class="yr">IPB</span></h1>
+        <div class="brand-sub">Preparatório para o Processo de Admissão aos Seminários · Edital 2027</div>
+      </div>
+    </div>
+    <div class="epigraph">“Fiel é o que vos chama, o qual também o fará.” <span>(1Ts 5.24)</span></div>
+  </div>
+</header>
+
+<div class="sticky-bar" id="stickyBar">
+  <div class="wrap sticky-in" id="stickyIn">
+    <button class="btn-sm btn-ghost" style="color:#eaf1f5;border-color:#2b5573" onclick="app.irHome()">‹ Início</button>
+    <span class="chip" id="chipModo"><span class="dot" style="background:var(--gold-l)"></span><span id="chipModoT">—</span></span>
+    <span class="chip" id="chipFiltro">—</span>
+    <span class="grow"></span>
+    <span class="chip" id="chipResp" title="Respondidas">✔ <b id="cResp">0</b></span>
+    <span class="chip" id="chipBranco" title="Em branco">○ <b id="cBranco">0</b></span>
+    <span class="chip" id="chipMark" title="Marcadas para revisão"><span class="dot" style="background:var(--gold)"></span><b id="cMark">0</b></span>
+    <span class="timer" id="timer">00:00</span>
+    <button class="btn-sm btn-soft" id="btnCrono" onclick="app.toggleCrono()">Iniciar</button>
+    <button class="btn-sm btn-ghost" style="color:#eaf1f5;border-color:#2b5573" onclick="app.resetCrono()">Zerar</button>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- HOME -->
+  <section id="viewHome">
+    <div class="card intro-card">
+      <h2 class="serif" style="font-size:1.35rem;margin-bottom:6px">Plataforma de estudos</h2>
+      <p class="hero-sub">Simulação fiel do Processo de Admissão aos Seminários da IPB: 140 questões de múltipla escolha em Bíblia (40), Símbolos de Fé (40), Português (20), Literatura (20) e Inglês (20), mais treino de Redação. Conteúdo alinhado ao Manual do Aspirante 2027.</p>
+      <div class="hub-links" style="margin-top:14px">
+        <button class="btn-soft btn-sm" onclick="app.irDesempenho()">📈 Meu desempenho</button>
+        <button class="btn-soft btn-sm" onclick="app.irCobertura()">🗂 Cobertura do edital</button>
+        <button class="btn-soft btn-sm" onclick="app.irRedacao()">✍ Redação</button>
+        <button class="btn-ghost btn-sm" id="btnContinuar2" onclick="app.continuar()" style="display:none">▶ Continuar simulado salvo</button>
+      </div>
+    </div>
+
+    <div class="tracks-head">
+      <div class="section-label" style="margin-bottom:2px">Três trilhas de estudo · método 80/20</div>
+      <p class="hero-sub" style="font-size:.9rem;margin:0">Escolha por onde render mais. A ideia do 80/20 é simples: concentrar o esforço onde se ganha mais ponto por hora estudada.</p>
+    </div>
+    <div class="tracks" id="tracks"></div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="section-label">Ou monte o seu próprio simulado</div>
+      <div style="margin-top:6px">
+        <div class="mini-label">Área</div>
+        <div class="seg" id="segFiltro">
+          <button data-f="completo" class="on">Completo</button>
+          <button data-f="Bíblia">Bíblia</button>
+          <button data-f="Símbolos de Fé">Símbolos de Fé</button>
+          <button data-f="Português">Português</button>
+          <button data-f="Literatura">Literatura</button>
+          <button data-f="Inglês">Inglês</button>
+        </div>
+      </div>
+      <div style="margin-top:16px">
+        <div class="mini-label">Modo</div>
+        <div class="mode-cards">
+          <div class="mode on" id="modeProva" onclick="app.setModo('prova')">
+            <h3 class="serif">Modo Prova</h3>
+            <p>Nenhuma resposta é revelada antes de finalizar. Cronômetro, navegação, marcação e correção completa ao final.</p>
+          </div>
+          <div class="mode" id="modeEstudo" onclick="app.setModo('estudo')">
+            <h3 class="serif">Modo Estudo</h3>
+            <p>Responda e clique em “Ver resposta” para conferir na hora o gabarito, a explicação e a referência.</p>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="chkReal">
+          <span><b>Modo Prova Real:</b> cronômetro regressivo no tempo oficial do Manual (3h por bloco; 6h no simulado completo). Ao esgotar, a prova é finalizada automaticamente.</span></label>
+      </div>
+      <div class="start-row">
+        <button class="btn-primary" onclick="app.iniciar()" style="font-size:1.02rem;padding:12px 22px">Iniciar simulado ▸</button>
+        <button class="btn-ghost" id="btnContinuar" onclick="app.continuar()">Continuar simulado salvo</button>
+        <button class="btn-danger btn-sm" id="btnRecomecar" onclick="app.recomecar()">Recomeçar do zero</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="crit-box" style="margin-top:0">
+        <h3 class="serif">Critérios oficiais de aprovação (Manual 2027)</h3>
+        <p style="font-size:.86rem;color:#5c4a1e;margin:0 0 4px">A nota final soma 150 pontos (140 objetivos + 10 da redação). É reprovado o candidato que:</p>
+        <ul>
+          <li>obtiver menos de <b>75</b> pontos no total de 150;</li>
+          <li>obtiver menos de <b>20</b> pontos em Conhecimentos Gerais da Bíblia;</li>
+          <li>obtiver menos de <b>10</b> pontos em Língua Portuguesa;</li>
+          <li>obtiver menos de <b>5</b> pontos na Redação;</li>
+          <li>zerar em Símbolos de Fé, Literatura Brasileira ou Língua Inglesa.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA / ESTUDO -->
+  <section id="viewProva" class="hidden">
+    <div class="card">
+      <div class="bar" style="margin-bottom:16px"><i id="progBar" style="width:0;background:var(--navy)"></i></div>
+      <div id="qContainer"></div>
+      <div class="nav-panel">
+        <div class="section-label">Navegação rápida</div>
+        <div class="nav-legend">
+          <span><i class="sw" style="background:#fff"></i> Em branco</span>
+          <span><i class="sw" style="background:#dbe9f2;border-color:#a9c8dd"></i> Respondida</span>
+          <span><i class="sw" style="outline:3px solid var(--navy);outline-offset:-1px"></i> Atual</span>
+          <span><i class="sw" style="background:#fff;position:relative"><b style="position:absolute;top:1px;right:1px;width:7px;height:7px;border-radius:50%;background:var(--gold)"></b></i> Revisar</span>
+        </div>
+        <div class="nav-grid" id="navGrid"></div>
+      </div>
+      <div class="q-actions no-print" style="margin-top:18px">
+        <button class="btn-primary" id="btnFinalizar" onclick="app.finalizar()">Finalizar simulado</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="viewResultado" class="hidden">
+    <div class="card">
+      <h2 class="serif" style="font-size:1.35rem;margin-bottom:6px">Resultado do simulado</h2>
+      <div class="score-hero" style="margin-top:10px">
+        <div class="score-ring" id="ring"><div class="rv"><b id="ringPct">0%</b><small>aproveitamento</small></div></div>
+        <div style="flex:1;min-width:220px">
+          <div id="verdictWrap" style="margin-bottom:10px"></div>
+          <div class="metrics" id="metricsGeral"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gamifWrap"></div>
+
+    <div class="card">
+      <h2 class="serif" style="font-size:1.15rem">Desempenho por disciplina</h2>
+      <table class="disc-table"><thead><tr><th>Disciplina</th><th>Acertos</th><th style="width:34%">Aproveitamento</th><th class="num">Pontos</th></tr></thead>
+      <tbody id="discBody"></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2 class="serif" style="font-size:1.15rem">Comparação com os critérios oficiais</h2>
+      <ul class="crit-list" id="critList"></ul>
+      <p style="font-size:.8rem;color:var(--ink2);margin-top:10px">A redação (até 10 pontos) é corrigida manualmente. Os critérios que dependem dela são estimados; treine a redação na aba correspondente.</p>
+    </div>
+
+    <div class="card">
+      <div class="err-box" id="errBox"></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 class="serif" style="font-size:1.15rem">Gabarito comentado</h2>
+        <div class="opt-row">
+          <div class="seg" id="segGabFilter">
+            <button data-g="todas" class="on">Todas</button>
+            <button data-g="erradas">Só erradas</button>
+            <button data-g="brancas">Em branco</button>
+          </div>
+        </div>
+      </div>
+      <div id="gabList" style="margin-top:12px"></div>
+    </div>
+
+    <div class="q-actions no-print">
+      <button class="btn-gold" onclick="app.novoSimulado()">Novo simulado ▸</button>
+      <button class="btn-ghost" onclick="app.irHome()">Voltar ao início</button>
+      <button class="btn-soft" onclick="window.print()">Imprimir / PDF</button>
+    </div>
+  </section>
+
+  <!-- DESEMPENHO -->
+  <section id="viewDesempenho" class="hidden">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 class="serif" style="font-size:1.25rem">Meu desempenho</h2>
+        <button class="btn-danger btn-sm" onclick="app.limparHistorico()">Limpar histórico</button>
+      </div>
+      <div id="evoWrap" style="margin-top:12px"></div>
+      <div id="weakWrap" style="margin-top:16px"></div>
+      <div id="histList" style="margin-top:16px"></div>
+    </div>
+    <div class="q-actions no-print"><button class="btn-ghost" onclick="app.irHome()">‹ Voltar ao início</button></div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section id="viewCobertura" class="hidden">
+    <div class="card">
+      <h2 class="serif" style="font-size:1.25rem">Cobertura do edital</h2>
+      <p class="cov-legend">Mapa objetivo entre cada tópico do Manual do Aspirante 2027 e as questões do simulado. Os números referem-se à ordem da prova gerada atualmente. Total: <b id="covTotal">140</b> questões.</p>
+      <table class="cov-table"><thead><tr><th style="width:120px">Disciplina</th><th>Conteúdo (tópico do edital)</th><th style="width:130px">Questões</th></tr></thead>
+      <tbody id="covBody"></tbody></table>
+    </div>
+    <div class="q-actions no-print"><button class="btn-ghost" onclick="app.irHome()">‹ Voltar ao início</button></div>
+  </section>
+
+  <!-- REDACAO -->
+  <section id="viewRedacao" class="hidden">
+    <div class="card">
+      <h2 class="serif" style="font-size:1.25rem">Treino de Redação</h2>
+      <p class="hero-sub" style="font-size:.92rem">A redação vale 10 pontos e exige a leitura de <i>Santidade: Sem a qual ninguém verá o Senhor</i>, de J.C. Ryle. Escolha uma proposta, dê um título e desenvolva uma dissertação: exponha a tese, apresente argumentos favoráveis e contrários e conclua com coerência. Seu texto é salvo automaticamente neste navegador.</p>
+      <div id="redList"></div>
+    </div>
+    <div class="q-actions no-print"><button class="btn-ghost" onclick="app.irHome()">‹ Voltar ao início</button></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-brand serif">Simulado Seminários IPB <span>· 2027</span></div>
+  <p class="foot-disc"><b>Material de estudo não oficial.</b> Questões autorais elaboradas com base no conteúdo programático do Manual do Aspirante 2027 e no formato histórico divulgado do Processo de Admissão aos Seminários da Igreja Presbiteriana do Brasil. Não reproduz provas oficiais.</p>
+  <div class="foot-bottom">
+    <span>© 2026 Simulado Seminários IPB. Todos os direitos reservados.</span>
+    <span class="foot-credit">Feito por <a href="https://sitesbrasilia.com.br/" target="_blank" rel="noopener">sitesbrasilia.com.br</a></span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- Privacidade -->
+<div class="modal-bg no-print" id="privBg" onclick="if(event.target===this)app.fecharPriv()">
+  <div class="modal">
+    <h3 class="serif">Privacidade e dados</h3>
+    <div class="priv-body" id="privBody"></div>
+    <div class="priv-actions">
+      <button class="btn-danger btn-sm" onclick="cloud.apagarDados()">Apagar meus dados</button>
+      <button class="btn-primary btn-sm" onclick="app.fecharPriv()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cliente Supabase (opcional; se falhar, o app roda em modo visitante) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+/* ============ DADOS ============ */
+const BANCO = [{"A": "Bíblia", "D": "facil", "T": "Pentateuco", "Q": "Qual livro encerra o Pentateuco?", "O": ["Levítico", "Números", "Deuteronômio", "Josué", "Juízes"], "C": 2, "E": "O Pentateuco é formado por Gênesis, Êxodo, Levítico, Números e Deuteronômio; Deuteronômio é o quinto e último. Josué já abre os livros históricos.", "R": "Dt (livro); cf. autoria mosaica do Pentateuco", "H": "É o último dos cinco livros de Moisés, formado por seus discursos de despedida às margens do Jordão."}, {"A": "Bíblia", "D": "facil", "T": "Criação", "Q": "Segundo Gênesis 1, em que dia da Criação foram feitos os luzeiros (sol, lua e estrelas)?", "O": ["No primeiro dia", "No segundo dia", "No terceiro dia", "No quarto dia", "No sexto dia"], "C": 3, "E": "A luz foi criada no 1º dia; os luzeiros que a governam (sol, lua e estrelas) foram postos no firmamento no 4º dia. Essa distinção é recorrente nas provas.", "R": "Gn 1.14-19", "H": "No relato, os dias 4 a 6 preenchem o que foi separado nos dias 1 a 3; os luzeiros preenchem o dia em que surgiu a luz."}, {"A": "Bíblia", "D": "media", "T": "Queda e promessa redentiva", "Q": "O texto tradicionalmente chamado de \"protoevangelho\", primeira promessa redentiva após a Queda, encontra-se em:", "O": ["Gênesis 3.15", "Gênesis 12.3", "Êxodo 12.13", "Levítico 16.16", "Deuteronômio 18.15"], "C": 0, "E": "Gn 3.15 anuncia a inimizade entre a semente da mulher e a serpente e o esmagamento da cabeça desta: é o protoevangelho. Gn 12.3 é a promessa a Abraão; Dt 18.15, o profeta semelhante a Moisés.", "R": "Gn 3.15", "H": "Procure a sentença dirigida à serpente, sobre a inimizade entre a semente da mulher e a dela."}, {"A": "Bíblia", "D": "facil", "T": "Instituição da Páscoa", "Q": "A instituição da Páscoa está diretamente ligada a qual acontecimento?", "O": ["A travessia do Jordão", "A saída do Egito (êxodo)", "A queda de Jericó", "O retorno do exílio babilônico", "A dedicação do templo de Salomão"], "C": 1, "E": "A Páscoa foi instituída na noite da décima praga, quando o anjo passou sobre as casas marcadas com o sangue do cordeiro, imediatamente antes da libertação do Egito.", "R": "Êx 12.1-14", "H": "O sangue do cordeiro nos umbrais precede imediatamente a libertação da escravidão."}, {"A": "Bíblia", "D": "facil", "T": "Decálogo", "Q": "Por intermédio de quem o Decálogo foi entregue a Israel, no monte Sinai?", "O": ["Josué", "Arão", "Moisés", "Samuel", "Esdras"], "C": 2, "E": "Moisés recebeu as duas tábuas da Lei no Sinai. Arão era o sacerdote; Josué, seu sucessor militar; Esdras, o escriba do pós-exílio.", "R": "Êx 20; Êx 31.18", "H": "Foi o mediador que subiu ao monte e recebeu as tábuas das mãos de Deus."}, {"A": "Bíblia", "D": "facil", "T": "Gerizim e Ebal", "Q": "Na cerimônia ordenada por Moisés e cumprida por Josué, os montes Gerizim e Ebal estavam associados, respectivamente, a:", "O": ["Sacrifício e sacerdócio", "Bênção e maldição", "Exílio e retorno", "Lei e graça", "Guerra e paz"], "C": 1, "E": "Gerizim era o monte da bênção e Ebal o da maldição, com as tribos divididas entre os dois. É associação clássica e cobrada com frequência.", "R": "Dt 27.11-13; Js 8.30-35", "H": "Um monte proclamava as bênçãos; o outro, as maldições, na ordem de Deuteronômio 27."}, {"A": "Bíblia", "D": "media", "T": "Períodos do AT", "Q": "Assinale a alternativa que apresenta os períodos do Antigo Testamento em ordem cronológica correta:", "O": ["Patriarcal, monárquico, tribal (juízes), exílio, pós-exílio", "Tribal (juízes), patriarcal, monárquico, exílio, pós-exílio", "Patriarcal, tribal (juízes), monárquico, exílio, pós-exílio", "Monárquico, patriarcal, tribal (juízes), pós-exílio, exílio", "Patriarcal, tribal (juízes), exílio, monárquico, pós-exílio"], "C": 2, "E": "A sequência é: patriarcas (Abraão a José), período tribal com os juízes, a monarquia (Saul, Davi, Salomão e os reinos divididos), o exílio babilônico e medo-persa, e o pós-exílio (retorno com Zorobabel, Esdras e Neemias).", "R": "Panorama do AT", "H": "Comece pelos patriarcas (Abraão) e avance até o retorno do cativeiro; a monarquia antecede o exílio."}, {"A": "Bíblia", "D": "dificil", "T": "Jó", "Q": "Quais são os três amigos de Jó que com ele dialogam antes da intervenção de Eliú?", "O": ["Agur, Lemuel e Hete", "Elifaz, Bildade e Zofar", "Eliabe, Abinadabe e Samá", "Hananias, Misael e Azarias", "Hemã, Etã e Hobabe"], "C": 1, "E": "Elifaz (temanita), Bildade (suíta) e Zofar (naamatita) discursam com Jó; só depois surge Eliú, o quarto e mais jovem. Os demais nomes pertencem a outros personagens do AT.", "R": "Jó 2.11; Jó 32.2", "H": "São três, e falam antes do jovem Eliú; um deles é chamado 'o temanita'."}, {"A": "Bíblia", "D": "dificil", "T": "Jó", "Q": "Sobre a mensagem de Eliú no livro de Jó, é correto afirmar que ele:", "O": ["Concorda plenamente com Jó e o declara inocente de qualquer culpa", "Repreende Jó por sua autojustificação e defende a justiça e a pedagogia de Deus no sofrimento", "Acusa Jó de ter cometido crimes ocultos, como os três amigos", "Aconselha Jó a amaldiçoar a Deus e morrer", "Afirma que Deus é indiferente ao sofrimento humano"], "C": 1, "E": "Eliú difere dos três amigos: não acusa Jó de pecados ocultos, mas o censura por justificar a si mesmo mais que a Deus, e apresenta o sofrimento também como instrução e disciplina divina, preparando a fala do Senhor.", "R": "Jó 32-37", "H": "Ele intervém por último, entre os três amigos e a voz de Deus, repreendendo ambos os lados."}, {"A": "Bíblia", "D": "facil", "T": "Salmos", "Q": "O Salmo 23 é conhecido sobretudo por qual imagem central?", "O": ["Deus como fogo consumidor", "Deus como Pastor que conduz e supre", "Deus como Juiz das nações", "Deus como Rocha de refúgio na guerra", "Deus como Criador dos céus"], "C": 1, "E": "\"O Senhor é o meu pastor; nada me faltará\": o Salmo 23 desenvolve a figura do Pastor que guia, sustenta e protege. As demais imagens aparecem em outros salmos.", "R": "Sl 23.1", "H": "Tudo decorre da primeira frase do salmo: 'O Senhor é o meu...'"}, {"A": "Bíblia", "D": "dificil", "T": "Salmos", "Q": "O Salmo 51 (\"Tem misericórdia de mim, ó Deus\") está tradicionalmente associado a qual contexto da vida de Davi?", "O": ["Sua fuga de Saul no deserto", "Seu arrependimento após o pecado com Bate-Seba, confrontado por Natã", "Sua vitória sobre Golias", "A morte de seu filho Absalão", "A trasladação da arca para Jerusalém"], "C": 1, "E": "O título do Salmo 51 o liga ao momento em que o profeta Natã confronta Davi por causa de Bate-Seba. É o grande salmo penitencial, com o clamor por um coração puro.", "R": "Sl 51 (título); 2Sm 12", "H": "É o grande salmo penitencial, ligado a um pecado grave e à repreensão feita pelo profeta Natã."}, {"A": "Bíblia", "D": "facil", "T": "Salmos", "Q": "Qual característica distingue o Salmo 119?", "O": ["É o salmo mais curto da Bíblia", "É um salmo imprecatório contra os inimigos", "É o maior capítulo da Bíblia, um acróstico alfabético que exalta a Lei/Palavra de Deus", "É atribuído explicitamente a Salomão", "É um cântico de subida entoado nas peregrinações"], "C": 2, "E": "O Salmo 119 é o maior capítulo bíblico, estruturado em 22 estrofes segundo as letras do alfabeto hebraico, e tem por tema a excelência da Palavra de Deus. Os cânticos de subida são os Salmos 120-134.", "R": "Sl 119", "H": "Pense em tamanho e forma: um acróstico gigantesco, o maior capítulo das Escrituras."}, {"A": "Bíblia", "D": "media", "T": "Profetas", "Q": "O célebre texto do \"Servo Sofredor\", que descreve aquele que foi \"ferido pelas nossas transgressões\", encontra-se em:", "O": ["Isaías 6", "Isaías 40", "Isaías 53", "Jeremias 31", "Ezequiel 37"], "C": 2, "E": "Isaías 53 é o quarto cântico do Servo, lido como profecia messiânica do sofrimento vicário de Cristo. Is 6 é a visão da glória; Is 40, o consolo; Ez 37, o vale dos ossos secos.", "R": "Is 53", "H": "Está no profeta do 'Emanuel', na parte da consolação, sobre alguém ferido por nossas transgressões."}, {"A": "Bíblia", "D": "media", "T": "Profetas", "Q": "A visão do vale dos ossos secos, que ganham vida ao sopro do Espírito, é registrada por qual profeta?", "O": ["Isaías", "Jeremias", "Ezequiel", "Daniel", "Habacuque"], "C": 2, "E": "Ezequiel 37 narra a visão dos ossos secos, símbolo da restauração de Israel pela ação vivificadora do Espírito de Deus.", "R": "Ez 37.1-14", "H": "O mesmo profeta do exílio junto ao rio Quebar, das rodas e da glória do Senhor."}, {"A": "Bíblia", "D": "dificil", "T": "Profetas", "Q": "A promessa de uma \"nova aliança\" que Deus escreveria no coração do seu povo aparece de modo mais explícito em:", "O": ["Jeremias 31", "Isaías 9", "Ezequiel 36", "Ageu 2", "Habacuque 3"], "C": 0, "E": "Jr 31.31-34 anuncia a nova aliança, com a lei gravada no coração e o pleno perdão dos pecados, citada em Hebreus 8. Ez 36 fala do coração novo e do Espírito, tema afim, mas o termo \"nova aliança\" é de Jeremias.", "R": "Jr 31.31-34; cf. Hb 8.8-12", "H": "O 'profeta das lágrimas' anuncia a lei escrita no coração; Hebreus 8 cita justamente essa passagem."}, {"A": "Bíblia", "D": "media", "T": "Daniel", "Q": "A revelação das \"setenta semanas\" foi dada a qual personagem?", "O": ["Isaías", "Amós", "Daniel", "Sofonias", "Zacarias"], "C": 2, "E": "A profecia das setenta semanas foi dada a Daniel por meio do anjo Gabriel, no contexto de sua oração pela restauração de Jerusalém.", "R": "Dn 9.24-27", "H": "O mesmo homem das visões na Babilônia, que orava três vezes ao dia de janelas abertas."}, {"A": "Bíblia", "D": "facil", "T": "Jonas", "Q": "Contra qual cidade o profeta Jonas foi enviado a pregar?", "O": ["Babilônia", "Nínive", "Samaria", "Damasco", "Társis"], "C": 1, "E": "Jonas foi enviado a Nínive, capital da Assíria. Társis era o destino de sua fuga, não o alvo da pregação.", "R": "Jn 1.1-2; Jn 3", "H": "A grande capital assíria, para longe da qual ele tentou fugir num navio."}, {"A": "Bíblia", "D": "dificil", "T": "Habacuque", "Q": "A declaração \"o justo viverá pela sua fé\", retomada por Paulo e por Hebreus, encontra-se originalmente em:", "O": ["Ageu 2.4", "Habacuque 2.4", "Malaquias 3.10", "Jonas 2.9", "Sofonias 3.17"], "C": 1, "E": "Hc 2.4 traz \"o justo viverá pela sua fé\", citado em Romanos 1.17, Gálatas 3.11 e Hebreus 10.38, tornando-se lema central da Reforma.", "R": "Hc 2.4", "H": "Profeta menor que questiona Deus sobre os caldeus; Paulo retoma a frase em Romanos e Gálatas."}, {"A": "Bíblia", "D": "media", "T": "Ageu", "Q": "A mensagem central do profeta Ageu, no pós-exílio, era exortar o povo a:", "O": ["Abandonar a idolatria dos reis de Israel", "Reconstruir o templo do Senhor, que estava negligenciado", "Voltar da Babilônia para Jerusalém", "Aceitar o domínio persa sem resistência", "Reunir-se em torno de um novo rei davídico imediato"], "C": 1, "E": "Ageu repreende o povo por cuidar das próprias casas enquanto a casa do Senhor permanecia em ruínas, exortando à reconstrução do templo no tempo de Zorobabel e Josué.", "R": "Ag 1.2-8", "H": "No pós-exílio, o povo caprichava nas próprias casas enquanto a casa do Senhor jazia em ruínas."}, {"A": "Bíblia", "D": "media", "T": "Sacerdócio", "Q": "Segundo o Pentateuco, o sacerdócio de Israel foi instituído na pessoa de:", "O": ["Melquisedeque e seus descendentes", "Arão e seus filhos, da tribo de Levi", "Josué e os anciãos do povo", "Samuel e a escola dos profetas", "Davi e a casa real"], "C": 1, "E": "O sacerdócio levítico foi instituído em Arão e seus filhos, com vestes e ritos de consagração descritos em Êxodo e Levítico. Melquisedeque é figura anterior e distinta (Gn 14; Hb 7).", "R": "Êx 28.1; Lv 8", "H": "A tribo separada para o serviço sagrado, a começar pelo próprio irmão de Moisés."}, {"A": "Bíblia", "D": "facil", "T": "Josué", "Q": "Uma das principais conquistas de Josué na entrada em Canaã foi a tomada de qual cidade, cujos muros caíram após a marcha do povo?", "O": ["Ai", "Jericó", "Hebrom", "Siquém", "Betel"], "C": 1, "E": "Jericó foi a primeira grande vitória na conquista, com a queda dos muros ao sétimo dia de marcha e ao som das trombetas.", "R": "Js 6", "H": "A primeira cidade fortificada a cair, após sete voltas e o toque das trombetas."}, {"A": "Bíblia", "D": "dificil", "T": "Tribos de Israel", "Q": "Sobre as doze tribos de Israel, é correto afirmar que:", "O": ["Levi recebeu a maior porção territorial em Canaã", "A tribo de Levi não recebeu herança territorial, e José foi representado pelas tribos de Efraim e Manassés", "Benjamim foi excluído das doze por sua violência", "José e Levi foram substituídos por Efraim e Manassés", "As doze tribos correspondem exatamente aos doze filhos de Jacó, sem exceção"], "C": 1, "E": "Levi, dedicado ao serviço sacerdotal, não recebeu território, mas cidades levíticas. Para manter o número doze na divisão da terra, José é representado por seus dois filhos, Efraim e Manassés.", "R": "Js 13.14,33; Gn 48.5", "H": "Uma tribo servia ao santuário e não herdou terra; um filho de José tornou-se duas tribos."}, {"A": "Bíblia", "D": "media", "T": "Salomão", "Q": "Quais livros do Antigo Testamento estão tradicionalmente associados à autoria de Salomão?", "O": ["Salmos, Provérbios e Lamentações", "Provérbios, Eclesiastes e Cantares", "Jó, Provérbios e Eclesiastes", "Cantares, Rute e Ester", "Eclesiastes, Daniel e Esdras"], "C": 1, "E": "A tradição atribui a Salomão Provérbios (grande parte), Eclesiastes e Cantares dos Cantares, ligados à sua fama de sabedoria. Salmos é majoritariamente de Davi.", "R": "Pv 1.1; Ec 1.1; Ct 1.1", "H": "Três livros sapienciais: um de máximas, um sobre a vaidade da vida e um cântico de amor."}, {"A": "Bíblia", "D": "dificil", "T": "Dois reinos", "Q": "Após a morte de Salomão, o reino se dividiu. Quem eram os reis do reino do Sul (Judá) e do reino do Norte (Israel), respectivamente?", "O": ["Jeroboão (Judá) e Roboão (Israel)", "Roboão (Judá) e Jeroboão (Israel)", "Saul (Judá) e Davi (Israel)", "Acabe (Judá) e Ezequias (Israel)", "Zedequias (Judá) e Oséias (Israel)"], "C": 1, "E": "Roboão, filho de Salomão, ficou com o reino do Sul (Judá, duas tribos); Jeroboão liderou o reino do Norte (Israel, dez tribos). A divisão ocorreu por causa da dureza de Roboão.", "R": "1Rs 12", "H": "O filho de Salomão ficou com o Sul; um antigo funcionário do rei liderou o Norte."}, {"A": "Bíblia", "D": "media", "T": "Samaritanos", "Q": "O surgimento do povo samaritano está historicamente ligado a:", "O": ["A migração de judeus para o Egito no tempo de Jeremias", "A mistura entre os israelitas remanescentes do Norte e povos estrangeiros trazidos após a queda de Samaria", "A descendência direta de Ismael", "Os judeus que permaneceram na Babilônia após o exílio", "A colonização grega da Palestina no período helenístico"], "C": 1, "E": "Com a queda de Samaria (722 a.C.), a Assíria deportou israelitas e trouxe povos estrangeiros; a mescla resultante formou os samaritanos, mais tarde desprezados pelos judeus, o que ecoa nos evangelhos.", "R": "2Rs 17.24-41", "H": "Resultam da mistura entre os remanescentes do Norte e povos deportados pela política assíria."}, {"A": "Bíblia", "D": "media", "T": "Gênesis 3-11", "Q": "Assinale a alternativa que apresenta, em ordem correta, fatos narrados em Gênesis 3 a 11:", "O": ["Queda, Torre de Babel, Caim e Abel, Dilúvio", "Queda, Caim e Abel, Dilúvio, Torre de Babel", "Dilúvio, Queda, Caim e Abel, Torre de Babel", "Caim e Abel, Queda, Torre de Babel, Dilúvio", "Queda, Dilúvio, Torre de Babel, Caim e Abel"], "C": 1, "E": "A sequência é: a Queda (cap. 3), Caim e Abel (cap. 4), o Dilúvio no tempo de Noé (caps. 6-9) e a Torre de Babel (cap. 11).", "R": "Gn 3-11", "H": "Comece pela desobediência no Éden e termine com a dispersão das línguas."}, {"A": "Bíblia", "D": "facil", "T": "Personagens do AT", "Q": "Qual personagem, segundo Gênesis, \"andou com Deus e já não era, porque Deus para si o tomou\", sem passar pela morte?", "O": ["Elias", "Moisés", "Enoque", "Noé", "Melquisedeque"], "C": 2, "E": "Gn 5.24 diz que Enoque foi tomado por Deus sem ver a morte. No AT, apenas Elias também é arrebatado (2Rs 2), mas o texto citado refere-se a Enoque.", "R": "Gn 5.24", "H": "Andou com Deus e foi tomado sem ver a morte, na genealogia anterior ao Dilúvio."}, {"A": "Bíblia", "D": "facil", "T": "Atos dos Apóstolos", "Q": "Em que cidade os discípulos foram chamados \"cristãos\" pela primeira vez?", "O": ["Jerusalém", "Antioquia", "Éfeso", "Roma", "Damasco"], "C": 1, "E": "Foi em Antioquia da Síria, importante centro missionário, que os discípulos passaram a ser chamados cristãos.", "R": "At 11.26", "H": "Cidade da Síria onde Barnabé e Saulo ensinaram por um ano inteiro."}, {"A": "Bíblia", "D": "media", "T": "Localização no NT", "Q": "A confissão de Pedro \"Tu és o Cristo, o Filho do Deus vivo\" ocorreu, segundo Mateus, na região de:", "O": ["Cafarnaum", "Cesareia de Filipe", "Betânia", "Nazaré", "Jericó"], "C": 1, "E": "Em Cesareia de Filipe, Jesus pergunta quem os homens dizem que ele é, e Pedro faz a grande confissão, à qual segue a promessa sobre a igreja.", "R": "Mt 16.13-18", "H": "Ao norte, perto das nascentes do Jordão, numa cidade que levava o nome de um imperador."}, {"A": "Bíblia", "D": "media", "T": "Localização no NT", "Q": "O Sermão do Monte, que inclui as Bem-aventuranças, está registrado principalmente em qual evangelho e capítulos?", "O": ["Mateus 5-7", "Marcos 4-6", "Lucas 10-12", "João 14-16", "Mateus 24-25"], "C": 0, "E": "O Sermão do Monte ocupa Mateus 5 a 7, iniciando pelas Bem-aventuranças. Lucas traz o paralelo \"Sermão da Planície\" (Lc 6), mais breve.", "R": "Mt 5-7", "H": "É o primeiro dos cinco grandes blocos de ensino do evangelho que abre o Novo Testamento, e ocupa três capítulos seguidos."}, {"A": "Bíblia", "D": "media", "T": "Localização no NT", "Q": "A \"Grande Comissão\" (\"Ide, portanto, fazei discípulos de todas as nações\") encerra qual evangelho?", "O": ["Marcos", "Lucas", "João", "Mateus", "Atos"], "C": 3, "E": "A forma clássica da Grande Comissão encerra o evangelho de Mateus (28.18-20). Atos não é evangelho; começa com a promessa do Espírito e a ascensão.", "R": "Mt 28.18-20", "H": "Encerra o mesmo evangelho do Sermão do Monte, o que mais agrupa os ensinos de Jesus."}, {"A": "Bíblia", "D": "dificil", "T": "Atos dos Apóstolos", "Q": "A instituição do ofício diaconal, com a escolha dos sete homens \"cheios do Espírito Santo e de sabedoria\", é narrada em:", "O": ["Atos 2", "Atos 6", "Atos 10", "Atos 15", "Atos 17"], "C": 1, "E": "Atos 6 relata a escolha dos sete para o serviço das mesas, atendendo à reclamação sobre a distribuição às viúvas; texto-base para o diaconato.", "R": "At 6.1-6", "H": "Nasce da queixa dos helenistas sobre as viúvas negligenciadas na distribuição diária."}, {"A": "Bíblia", "D": "media", "T": "Localização no NT", "Q": "A chamada \"oração sacerdotal\" de Jesus, em que ele intercede pelos discípulos e pelos que haveriam de crer, está em:", "O": ["Mateus 6", "Lucas 11", "João 17", "Marcos 14", "Hebreus 7"], "C": 2, "E": "João 17 registra a oração sacerdotal, na véspera da paixão. Mt 6 e Lc 11 trazem o Pai-Nosso, que é distinto.", "R": "Jo 17", "H": "No quarto evangelho, momentos antes da prisão no jardim."}, {"A": "Bíblia", "D": "dificil", "T": "Ensinos paulinos", "Q": "O imperativo \"não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente\" pertence a qual epístola?", "O": ["Efésios 4", "Romanos 12", "Filipenses 2", "Colossenses 3", "Gálatas 5"], "C": 1, "E": "Rm 12.1-2 apresenta a exortação ao culto racional e à não conformação com o mundo, abrindo a seção prática da carta.", "R": "Rm 12.2", "H": "Abre a seção prática da grande carta de Paulo à igreja da capital do Império, sobre apresentar o corpo em culto racional."}, {"A": "Bíblia", "D": "dificil", "T": "Ensinos paulinos", "Q": "Em qual epístola Paulo ensina que \"a lei nos serviu de aio para nos conduzir a Cristo, a fim de que fôssemos justificados pela fé\"?", "O": ["Romanos", "1 Coríntios", "Gálatas", "Efésios", "Hebreus"], "C": 2, "E": "Gl 3.24 usa a imagem do aio (pedagogo) para mostrar a função temporária e preparatória da lei, que aponta para Cristo.", "R": "Gl 3.24", "H": "A carta em que Paulo combate os que exigiam a lei para se justificarem."}, {"A": "Bíblia", "D": "media", "T": "Ensinos paulinos", "Q": "A contraposição entre \"as obras da carne\" e \"o fruto do Espírito\" (amor, alegria, paz...) é desenvolvida por Paulo em:", "O": ["Gálatas 5", "Romanos 6", "1 Coríntios 13", "Efésios 6", "Tiago 3"], "C": 0, "E": "Gl 5.19-23 lista as obras da carne e o fruto do Espírito. 1Co 13 trata do amor; Ef 6, da armadura de Deus.", "R": "Gl 5.19-23", "H": "A mesma carta do 'aio', no capítulo que trata da liberdade cristã."}, {"A": "Bíblia", "D": "dificil", "T": "Hebreus", "Q": "Segundo a Epístola aos Hebreus, o sacerdócio de Cristo é apresentado como superior por ser \"segundo a ordem de\":", "O": ["Arão", "Levi", "Melquisedeque", "Zadoque", "Abraão"], "C": 2, "E": "Hebreus 5 a 7 argumenta que Cristo é sacerdote segundo a ordem de Melquisedeque, superior ao sacerdócio levítico, pois é eterno e não fundado na descendência de Arão.", "R": "Hb 7.11-17", "H": "Sacerdote-rei de Salém, sem genealogia registrada, já citado no Salmo 110."}, {"A": "Bíblia", "D": "media", "T": "Companheiros de Paulo", "Q": "O escravo fugitivo em favor de quem Paulo escreve uma breve carta, pedindo que seja recebido \"como irmão amado\", chama-se:", "O": ["Tíquico", "Onésimo", "Epafras", "Trófimo", "Demas"], "C": 1, "E": "A carta a Filemom intercede por Onésimo, escravo fugitivo convertido por Paulo, para que fosse recebido não mais como servo, mas como irmão.", "R": "Fm 10-16", "H": "A menor carta de Paulo, dirigida a um senhor cujo escravo havia fugido."}, {"A": "Bíblia", "D": "dificil", "T": "Sete igrejas do Apocalipse", "Q": "Diante de qual das sete igrejas do Apocalipse Cristo declara ter posto \"uma porta aberta, que ninguém pode fechar\", sem lhe dirigir repreensão?", "O": ["Éfeso", "Laodiceia", "Sardes", "Filadélfia", "Pérgamo"], "C": 3, "E": "À igreja de Filadélfia (Ap 3.7-13) Cristo apresenta a porta aberta e não faz repreensão, exortando-a a conservar o que tem. Laodiceia é a igreja morna; Sardes tem \"nome de que vive\", mas está morta.", "R": "Ap 3.7-13", "H": "A igreja da 'porta aberta', uma das duas que não recebem repreensão."}, {"A": "Bíblia", "D": "media", "T": "Parábolas e ministério de Jesus", "Q": "A parábola em que um homem, descendo de Jerusalém para Jericó, cai nas mãos de salteadores e é socorrido por um estrangeiro compassivo, é conhecida como a parábola do:", "O": ["Filho pródigo", "Bom samaritano", "Semeador", "Rico e Lázaro", "Fariseu e o publicano"], "C": 1, "E": "A parábola do bom samaritano (Lc 10.25-37) ensina, em resposta à pergunta \"quem é o meu próximo?\", que o amor ao próximo não conhece fronteiras étnicas ou religiosas. É exclusiva do evangelho de Lucas.", "R": "Lc 10.25-37", "H": "O socorro veio de um desprezado pelos judeus, depois que um sacerdote e um levita passaram ao largo."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Escritura", "Q": "Quais são os Símbolos de Fé da Igreja Presbiteriana do Brasil?", "O": ["A Bíblia e a Confissão de Augsburgo", "A Confissão de Fé de Westminster e os Catecismos Maior e Breve", "Os Cânones de Dort e o Catecismo de Heidelberg", "O Credo Apostólico e o Credo Niceno apenas", "A Confissão Belga e a Segunda Confissão Helvética"], "C": 1, "E": "Os Símbolos de Fé da IPB são a Confissão de Fé de Westminster e os dois Catecismos de Westminster (Maior e Breve). Os demais são documentos reformados de outras tradições.", "R": "Constituição da IPB; Símbolos de Westminster", "H": "São três textos da mesma assembleia inglesa do século XVII: uma peça confessional e dois de perguntas e respostas, um extenso e um resumido."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Escritura", "Q": "Qual é o tema do primeiro capítulo da Confissão de Fé de Westminster?", "O": ["Da Criação", "De Deus e da Santíssima Trindade", "Da Escritura Sagrada", "Dos Decretos Eternos de Deus", "Do Culto Religioso"], "C": 2, "E": "A CFW abre tratando \"Da Escritura Sagrada\" (cap. 1), fundamentando toda a doutrina no princípio da autoridade da Palavra. Deus e a Trindade vêm no cap. 2.", "R": "CFW 1", "H": "O documento abre tratando exatamente da base de toda a doutrina reformada: a revelação escrita."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Escritura", "Q": "Segundo a Confissão de Fé de Westminster, qual é a regra infalível de interpretação da Escritura?", "O": ["A tradição da Igreja", "O consenso dos concílios", "A própria Escritura", "O magistério do pastor local", "A iluminação privada de cada crente"], "C": 2, "E": "A CFW 1.9 afirma que a regra infalível de interpretação da Escritura é a própria Escritura; assim, um texto obscuro é esclarecido por outros mais claros.", "R": "CFW 1.9", "H": "O princípio reformado é que o texto se interpreta por si mesmo; as passagens claras iluminam as obscuras."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Escritura", "Q": "Sobre o cânon e os apócrifos, a Confissão de Fé de Westminster ensina que os livros apócrifos:", "O": ["Fazem parte do cânon, com autoridade igual à dos demais livros", "Não sendo de inspiração divina, não fazem parte do cânon, e não têm autoridade na Igreja senão como outros escritos humanos", "Devem ser lidos publicamente no culto como Palavra de Deus", "Foram inspirados, mas perderam autoridade com o tempo", "São a regra suprema em questões de moral, embora não de doutrina"], "C": 1, "E": "A CFW 1.3 declara que os apócrifos, não sendo de inspiração divina, não fazem parte do cânon das Escrituras e não têm autoridade na Igreja de Deus, sendo tratados como outros escritos humanos.", "R": "CFW 1.3", "H": "A Confissão os coloca no nível de escritos humanos, sem inspiração nem autoridade canônica."}, {"A": "Símbolos de Fé", "D": "media", "T": "Deus e a Trindade", "Q": "Segundo o Breve Catecismo, o que é Deus?", "O": ["Uma força impessoal que permeia o universo", "Espírito, infinito, eterno e imutável no seu ser, sabedoria, poder, santidade, justiça, bondade e verdade", "O primeiro entre muitos deuses", "Uma projeção da consciência humana", "Apenas o Pai, sendo o Filho e o Espírito criaturas"], "C": 1, "E": "O Breve Catecismo (P.4) define: \"Deus é Espírito, infinito, eterno e imutável no seu ser, sabedoria, poder, santidade, justiça, bondade e verdade\".", "R": "BC 4", "H": "Reveja a resposta 4 do Breve Catecismo, que define Deus por sua natureza e por uma lista de atributos."}, {"A": "Símbolos de Fé", "D": "media", "T": "Deus e a Trindade", "Q": "Quanto à doutrina da Trindade, os Símbolos de Westminster afirmam que:", "O": ["Há três deuses distintos em substância", "Há um só Deus em três pessoas: Pai, Filho e Espírito Santo, da mesma substância e iguais em poder e glória", "Deus é uma só pessoa que se manifesta em três modos sucessivos", "O Pai é Deus, mas o Filho e o Espírito são inferiores em natureza", "A Trindade é um mistério ausente das Escrituras"], "C": 1, "E": "BC 6: na Divindade há três pessoas, o Pai, o Filho e o Espírito Santo, e estes três são um só Deus, da mesma substância, iguais em poder e glória. A opção do \"modo sucessivo\" é o modalismo, condenado.", "R": "BC 6; CFW 2.3", "H": "Reveja a formulação trinitária dos Símbolos (BC 6): unidade de essência e distinção de três pessoas."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Decretos", "Q": "Segundo a Confissão de Fé de Westminster, ao decretar todas as coisas, Deus:", "O": ["Torna-se o autor do pecado", "Determina o fim, mas não os meios pelos quais ele se realiza", "Ordena livre e imutavelmente tudo o que acontece, sem ser autor do pecado nem violar a vontade das criaturas", "Age condicionado à previsão do que os homens fariam por si mesmos", "Deixa os eventos futuros indeterminados até que ocorram"], "C": 2, "E": "A CFW 3.1 ensina que Deus ordenou desde a eternidade, livre e imutavelmente, tudo o que acontece; contudo, de modo que não é autor do pecado, nem viola a vontade das criaturas, nem tira a liberdade ou contingência das causas segundas, mas antes as estabelece.", "R": "CFW 3.1", "H": "Reveja CFW 3.1, que concilia a soberania do decreto divino com a não autoria do mal e a responsabilidade das criaturas."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Decretos e predestinação", "Q": "Segundo os Símbolos de Fé, qual é o fim último e supremo da predestinação e de todos os decretos de Deus?", "O": ["Salvar o maior número possível de pessoas", "Condenar os réprobos", "A manifestação da glória de Deus", "Satisfazer a curiosidade dos eleitos", "Preservar a ordem social"], "C": 2, "E": "O propósito máximo dos decretos e da predestinação é a glória de Deus, para louvor da sua gloriosa graça e justiça. A salvação dos eleitos é meio para esse fim supremo.", "R": "CFW 3.3-7; Ef 1.6", "H": "Todos os decretos convergem para um único alvo supremo, e não para o bem-estar do homem em si."}, {"A": "Símbolos de Fé", "D": "media", "T": "Providência", "Q": "A afirmação \"Deus, o grande Criador de todas as coisas, sustenta, dirige, dispõe e governa todas as criaturas, ações e coisas\" refere-se à doutrina da:", "O": ["Predestinação", "Providência", "Criação", "Justificação", "Vocação eficaz"], "C": 1, "E": "Trata-se da providência (CFW 5.1): a obra pela qual Deus conserva e governa continuamente toda a criação, do maior ao menor evento.", "R": "CFW 5.1", "H": "É a doutrina de que Deus sustenta, dirige e governa tudo o que criou."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Pacto", "Q": "Segundo a Confissão, a distância entre Deus e a criatura é tão grande que o homem só pode ter alguma fruição de Deus por meio de:", "O": ["Seus próprios méritos e boas obras", "Alguma condescendência da parte de Deus, que ele quis expressar por meio de um pacto", "A contemplação da natureza apenas", "A razão humana autônoma", "Ritos e sacrifícios oferecidos por sacerdotes"], "C": 1, "E": "A CFW 7.1 ensina que, dada a distância entre o Criador e a criatura, Deus quis, por condescendência voluntária, relacionar-se com o homem por meio de pacto: primeiro o pacto de obras, depois o pacto da graça.", "R": "CFW 7.1-3", "H": "Reveja CFW 7.1: a enorme distância entre Deus e a criatura só se vence por iniciativa graciosa dele, formalizada num acordo."}, {"A": "Símbolos de Fé", "D": "media", "T": "Queda e pecado", "Q": "Segundo o Breve Catecismo, o que é o pecado?", "O": ["Um desajuste psicológico herdado do ambiente", "A falta de conformidade com a lei de Deus, ou a transgressão dela", "Apenas os atos externos que prejudicam o próximo", "Uma ilusão sem consequências eternas", "A ausência de educação religiosa"], "C": 1, "E": "BC 14: \"Pecado é a falta de conformidade com a lei de Deus, ou a transgressão dela\". A definição abrange tanto a omissão quanto a transgressão.", "R": "BC 14", "H": "A definição do Breve Catecismo gira em torno da 'lei de Deus': faltar a ela ou transgredi-la."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Queda e pecado", "Q": "Sobre o estado do homem após a Queda, quanto à sua capacidade espiritual, a Confissão ensina que o homem:", "O": ["Manteve plena capacidade de escolher o bem espiritual por si mesmo", "Perdeu totalmente a vontade, tornando-se autômato", "Perdeu inteiramente toda a habilidade da vontade para qualquer bem espiritual que acompanha a salvação, estando morto no pecado e incapaz de converter-se a si mesmo", "Conservou metade de sua justiça original", "Precisa apenas de bom exemplo para retornar a Deus"], "C": 2, "E": "A CFW 9.3 afirma que, pela queda em um estado de pecado, o homem perdeu completamente toda a habilidade da vontade para qualquer bem espiritual que acompanha a salvação, não podendo, por sua própria força, converter-se ou preparar-se para isso.", "R": "CFW 9.3", "H": "A Confissão fala em incapacidade total: o homem está morto no pecado, sem força para se converter."}, {"A": "Símbolos de Fé", "D": "media", "T": "Livre-arbítrio", "Q": "Quanto ao livre-arbítrio no estado de pecado, os Símbolos afirmam que o homem caído:", "O": ["Tem plena liberdade e poder para querer o bem espiritual", "É livre, mas sua liberdade é indiferente entre o bem e o mal", "Ficou de tal modo escravo do pecado que, por sua própria força, não pode converter-se nem querer o bem espiritual salvífico", "Perdeu toda e qualquer vontade", "Só peca quando é forçado externamente"], "C": 2, "E": "A liberdade natural do homem permanece (ele age voluntariamente), mas, no estado de pecado, tornou-se escravo do pecado, incapaz por si mesmo de querer o bem espiritual salvador; só a graça o liberta.", "R": "CFW 9.3-4", "H": "O homem caído tornou-se escravo do pecado, incapaz por si de querer o bem espiritual salvífico."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Vocação eficaz", "Q": "A obra pela qual o Espírito Santo, iluminando a mente e renovando a vontade, atrai eficazmente o pecador a Cristo, é chamada nos Símbolos de:", "O": ["Vocação geral", "Vocação eficaz", "Justificação", "Regeneração batismal", "Perseverança"], "C": 1, "E": "A vocação (chamada) eficaz (CFW 10; BC 31) é a obra do Espírito que, pela Palavra, convence do pecado, ilumina a mente, renova a vontade e persuade e habilita o pecador a abraçar Cristo, distinta da chamada externa geral.", "R": "CFW 10; BC 31", "H": "É a obra pela qual o Espírito ilumina a mente e renova a vontade, atraindo o pecador a Cristo."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Justificação", "Q": "Segundo os Símbolos de Fé, a justificação é:", "O": ["Um processo gradual pelo qual Deus nos torna internamente justos", "Um ato da livre graça de Deus, pelo qual perdoa todos os nossos pecados e nos aceita como justos à sua vista, somente por causa da justiça de Cristo imputada a nós e recebida unicamente pela fé", "A recompensa concedida às boas obras do crente", "A aceitação por Deus de nossa sinceridade e esforço moral", "A eliminação total do pecado na vida presente"], "C": 1, "E": "BC 33: a justificação é ato da livre graça de Deus que perdoa os pecados e aceita o pecador como justo, somente por causa da justiça de Cristo, imputada e recebida só pela fé. É ato (declaração), não processo; distingue-se da santificação.", "R": "BC 33; CFW 11; CM 70", "H": "É ato (não processo) que perdoa e declara justo, com base na justiça de Cristo imputada e recebida pela fé."}, {"A": "Símbolos de Fé", "D": "media", "T": "Justificação e santificação", "Q": "Qual das alternativas expressa corretamente a diferença entre justificação e santificação?", "O": ["Justificação é um processo interior; santificação é um ato instantâneo", "Justificação é ato que imputa a justiça de Cristo e declara o pecador justo; santificação é obra progressiva que infunde graça e renova à imagem de Deus", "Ambas são a mesma coisa, apenas com nomes diferentes", "Justificação depende das obras; santificação, apenas da fé", "Justificação ocorre após a morte; santificação, antes"], "C": 1, "E": "Na justificação Deus imputa a justiça de Cristo, perdoando e aceitando o pecador de uma vez por todas; na santificação Deus infunde graça e o crente cresce em santidade progressivamente. Distintas, mas inseparáveis.", "R": "CM 77; CFW 11 e 13", "H": "Uma é ato que imputa e declara; a outra é obra progressiva que infunde graça e renova à imagem de Deus."}, {"A": "Símbolos de Fé", "D": "media", "T": "Adoção", "Q": "Segundo os Símbolos, a adoção é o ato da livre graça de Deus pelo qual os justificados são:", "O": ["Tornados anjos após a morte", "Recebidos no número dos filhos de Deus, com direito a todos os seus privilégios e feitos herdeiros com Cristo", "Isentos de toda disciplina paterna", "Elevados acima dos demais crentes", "Confirmados por méritos próprios"], "C": 1, "E": "BC 34 / CFW 12: a adoção recebe os justificados no número dos filhos de Deus, dando-lhes o nome, o Espírito e os privilégios de filhos, e fazendo-os herdeiros das promessas e co-herdeiros com Cristo.", "R": "BC 34; CFW 12", "H": "É o ato pelo qual os justificados são recebidos como filhos de Deus, herdeiros com Cristo."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Perseverança", "Q": "Quanto à perseverança dos santos, a Confissão de Fé de Westminster ensina que os verdadeiramente regenerados:", "O": ["Podem cair total e finalmente da graça e perder a salvação", "Não podem, nem total nem finalmente, cair do estado de graça, mas hão de perseverar até o fim e ser eternamente salvos", "Perseveram por sua própria força de vontade", "Só perseveram se mantiverem perfeita obediência", "Nunca têm certeza de sua salvação"], "C": 1, "E": "A CFW 17.1 afirma que os que Deus aceitou no Amado e santificou não podem cair total nem finalmente do estado de graça, mas perseverarão até o fim, não por sua própria força, mas pela imutabilidade do decreto e da graça de Deus.", "R": "CFW 17.1", "H": "Os verdadeiramente regenerados não caem final nem totalmente: hão de perseverar até o fim."}, {"A": "Símbolos de Fé", "D": "media", "T": "Certeza da salvação", "Q": "Segundo a Confissão, a certeza infalível da salvação:", "O": ["É uma mera conjectura fundada em opinião provável", "Pertence de tal modo à essência da fé que ninguém é verdadeiro crente sem tê-la desde o primeiro instante", "Pode ser alcançada pelo crente verdadeiro, ainda que possa por um tempo ser abalada, e se funda nas promessas de Deus, nas evidências das graças e no testemunho do Espírito", "Depende exclusivamente de experiências extraordinárias e visões", "É impossível a qualquer ser humano nesta vida"], "C": 2, "E": "A CFW 18 ensina que essa certeza não pertence à essência da fé (um crente verdadeiro pode esperar muito por ela), mas pode ser alcançada, fundando-se nas promessas divinas, nas evidências internas da graça e no testemunho do Espírito; pode ser abalada, mas não perdida definitivamente.", "R": "CFW 18.1-4", "H": "Reveja CFW 18: a segurança da salvação é possível ao fiel, pode oscilar e repousa em fundamentos objetivos e subjetivos."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Lei de Deus", "Q": "A Confissão distingue tríplice divisão da lei dada a Israel. Quanto às leis cerimoniais e judiciais (civis), ela ensina que:", "O": ["Todas as três permanecem obrigatórias em todos os detalhes", "As leis cerimoniais foram ab-rogadas em Cristo, e as judiciais expiraram com o Estado daquele povo, mas a lei moral permanece obrigatória a todos", "A lei moral foi abolida, restando as cerimoniais", "Nenhuma parte da lei tem qualquer uso para o cristão", "Somente a lei civil de Israel continua vinculante às nações"], "C": 1, "E": "A CFW 19 distingue lei moral (perpétua), leis cerimoniais (ab-rogadas por Cristo, seu cumprimento) e leis judiciais (que expiraram com o corpo político de Israel, salvo a equidade geral). A lei moral, resumida no Decálogo, obriga a todos.", "R": "CFW 19.3-5", "H": "Reveja CFW 19: das três divisões da lei, duas cessaram (uma cumprida em Cristo, outra com o antigo Estado) e uma continua obrigando a todos."}, {"A": "Símbolos de Fé", "D": "media", "T": "Lei de Deus", "Q": "Nossos deveres para com Deus (as quatro primeiras tábuas do Decálogo) são resumidos, segundo o Breve Catecismo, em:", "O": ["Amar o próximo como a si mesmo", "Amar a Deus de todo o coração, alma, força e entendimento", "Guardar apenas o dia de descanso", "Honrar pai e mãe", "Não matar e não furtar"], "C": 1, "E": "O sumário dos Dez Mandamentos: os quatro primeiros ensinam nosso dever para com Deus (amá-lo de todo o coração) e os seis últimos, o dever para com o próximo (amá-lo como a nós mesmos).", "R": "BC 41-42; Mt 22.37-40", "H": "As quatro primeiras tábuas do Decálogo condensam-se no primeiro e grande mandamento (Mt 22.37)."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Culto e Dia do Senhor", "Q": "Segundo o princípio regulador do culto na CFW, o modo aceitável de adorar o Deus verdadeiro é:", "O": ["Deixado à criatividade e ao gosto de cada comunidade", "Instituído por Deus mesmo e de tal modo limitado por sua vontade revelada que ele não pode ser adorado segundo as imaginações dos homens", "Definido pela autoridade civil", "Regido pela tradição, ainda que sem base bíblica", "Livre, desde que sincero"], "C": 1, "E": "A CFW 21.1 estabelece o princípio regulador: o modo aceitável de adorar Deus é instituído por ele mesmo e limitado por sua vontade revelada, não podendo ser adorado segundo invenções humanas.", "R": "CFW 21.1", "H": "Só se adora a Deus do modo que ele mesmo instituiu, não segundo a imaginação humana (princípio regulador)."}, {"A": "Símbolos de Fé", "D": "media", "T": "Dia do Senhor", "Q": "Sobre a guarda do dia de descanso, a Confissão ensina que, no Novo Testamento, ele:", "O": ["Foi totalmente abolido", "Continua sendo o sábado, sétimo dia", "Passou a ser o primeiro dia da semana, o Dia do Senhor, em memória da ressurreição de Cristo", "Pode ser qualquer dia, indiferentemente", "Só deve ser guardado por pastores"], "C": 2, "E": "A CFW 21.7 ensina que Deus separou um dia em sete para descanso; desde a ressurreição de Cristo, esse dia passou a ser o primeiro da semana, chamado o Dia do Senhor, a ser guardado até o fim.", "R": "CFW 21.7-8", "H": "Reveja CFW 21.7-8: no Novo Testamento o dia de descanso muda, ancorado num evento central da fé cristã."}, {"A": "Símbolos de Fé", "D": "media", "T": "Magistrado civil", "Q": "Segundo a Confissão de Fé de Westminster, o magistrado civil:", "O": ["Não tem qualquer origem divina", "Foi ordenado por Deus, que o constituiu sob si mesmo sobre o povo, para a glória de Deus e o bem público", "Deve governar a Igreja e administrar os sacramentos", "É sempre ilegítimo quando não é cristão", "É indiferente à vontade de Deus"], "C": 1, "E": "A CFW 23.1 afirma que Deus, o Senhor Supremo de todo o mundo, ordenou magistrados civis para estarem sob ele, sobre o povo, para a glória de Deus e o bem público; ao mesmo tempo, o magistrado não deve tomar para si a administração da Palavra e dos sacramentos.", "R": "CFW 23.1-3", "H": "Foi ordenado por Deus, constituído sob ele para a glória divina e o bem público."}, {"A": "Símbolos de Fé", "D": "media", "T": "Casamento", "Q": "Assinale a alternativa que NÃO corresponde a um fim do casamento segundo a Confissão de Fé de Westminster:", "O": ["O mútuo auxílio entre marido e mulher", "A propagação da humanidade por descendência legítima", "O aumento da Igreja com uma santa descendência", "A prevenção da impureza", "A obtenção de status e vantagem social"], "C": 4, "E": "A CFW 24.2 elenca como fins do casamento: o mútuo auxílio dos cônjuges, a propagação legítima da humanidade e da Igreja, e a prevenção da impureza. Vantagem social não figura entre eles.", "R": "CFW 24.2", "H": "A questão pede o que NÃO é fim do casamento; procure algo mundano, ligado a status."}, {"A": "Símbolos de Fé", "D": "media", "T": "Igreja", "Q": "Segundo os Símbolos de Fé, quem é o único Cabeça da Igreja?", "O": ["O papa", "O Concílio Supremo", "O Senhor Jesus Cristo", "O Espírito Santo, exclusivamente", "O pastor de cada congregação"], "C": 2, "E": "A CFW 25.6 declara que não há outro cabeça da Igreja senão o Senhor Jesus Cristo; o papa não pode, em sentido algum, ser cabeça dela.", "R": "CFW 25.6", "H": "A Igreja tem um só Cabeça, e nenhum homem pode ocupar esse lugar."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Sacramentos", "Q": "Segundo a Confissão, em cada sacramento há uma \"relação sacramental\", ou seja, uma união entre o sinal e a coisa significada, de sorte que:", "O": ["O sinal se transforma fisicamente na coisa significada", "Os nomes e efeitos de um são atribuídos ao outro, embora permaneçam distintos", "O sacramento confere a graça automaticamente, pela mera realização do rito", "Não há relação alguma entre o sinal e o que ele representa", "Há sete sacramentos com igual eficácia"], "C": 1, "E": "A CFW 27.2 fala da relação sacramental: há tal união entre o sinal e a coisa significada que os nomes e efeitos de um são atribuídos ao outro, sem confusão nem transformação física (negando a transubstanciação e o ex opere operato).", "R": "CFW 27.2", "H": "Na relação sacramental, sinal e coisa significada se unem, mas permanecem distintos."}, {"A": "Símbolos de Fé", "D": "media", "T": "Sacramentos", "Q": "Quantos e quais são os sacramentos instituídos por Cristo, segundo os Símbolos de Fé?", "O": ["Sete: batismo, confirmação, eucaristia, penitência, ordem, matrimônio e unção", "Dois: o batismo e a Ceia do Senhor", "Três: batismo, Ceia e lava-pés", "Um: apenas a Ceia do Senhor", "Nenhum, pois os sacramentos foram abolidos"], "C": 1, "E": "A tradição reformada reconhece apenas dois sacramentos instituídos por Cristo no Evangelho: o batismo e a Ceia do Senhor. Os sete sacramentos são doutrina romana, rejeitada pela Confissão.", "R": "CFW 27.4; BC 92-93", "H": "São apenas dois, ambos instituídos diretamente por Cristo."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Batismo", "Q": "Sobre o batismo, a Confissão de Fé de Westminster ensina que o elemento exterior é a água, com a qual o candidato deve ser batizado em nome do Pai, do Filho e do Espírito Santo, por:", "O": ["Qualquer membro da igreja", "Um ministro do Evangelho legalmente chamado e ordenado", "Um ancião presbítero, mesmo não ordenado ao ministério da Palavra", "O próprio candidato, em autobatismo", "Um diácono designado"], "C": 1, "E": "A CFW 28.2 estabelece que o batismo, com água, em nome da Trindade, deve ser administrado por um ministro do Evangelho legalmente chamado e ordenado. Isso exclui o batismo por leigos e o autobatismo.", "R": "CFW 28.2", "H": "Reveja CFW 28.2: quem administra o batismo é definido pelo ofício e chamado, não qualquer pessoa."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Ceia do Senhor", "Q": "Quanto à presença de Cristo na Ceia do Senhor, a Confissão rejeita a transubstanciação e ensina que os que dignamente participam:", "O": ["Comem a carne física de Cristo, que substitui o pão", "Recebem e se alimentam de Cristo crucificado de modo espiritual e real, pela fé, não de modo corporal e carnal", "Realizam um mero ato de memória, sem qualquer comunhão com Cristo", "Renovam o sacrifício de Cristo a cada celebração", "Recebem a graça pela simples realização do rito"], "C": 1, "E": "A CFW 29 rejeita a transubstanciação (Roma) e o mero memorialismo; ensina que os dignos participantes recebem e se alimentam espiritual e realmente de Cristo, pela fé, não de modo carnal, mas por presença espiritual verdadeira.", "R": "CFW 29.6-7", "H": "Rejeitando a transubstanciação, ensina que se recebe a Cristo de modo espiritual e real, pela fé."}, {"A": "Símbolos de Fé", "D": "media", "T": "Cristo Mediador", "Q": "Quais são os três ofícios de Cristo, o Mediador, segundo o Breve Catecismo?", "O": ["Salvador, Messias e Senhor", "Profeta, Sacerdote e Rei", "Criador, Redentor e Consolador", "Rei, Juiz e Legislador", "Mestre, Pastor e Bispo"], "C": 1, "E": "BC 23: Cristo, como nosso Redentor, executa os ofícios de profeta (revela a vontade de Deus), sacerdote (oferece-se em sacrifício e intercede) e rei (governa e defende seu povo).", "R": "BC 23-26", "H": "Três ofícios resumem sua obra: um anuncia, um intercede e sacrifica, um governa."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Cristo Mediador", "Q": "Sobre a pessoa de Cristo, o Mediador, os Símbolos ensinam que ele é:", "O": ["Uma só pessoa com uma só natureza divina", "Duas pessoas em uma só natureza", "Uma só pessoa, verdadeiro Deus e verdadeiro homem, com duas naturezas distintas, unidas sem conversão, composição ou confusão", "Mais Deus do que homem", "Um homem que se tornou divino por adoção"], "C": 2, "E": "Seguindo Calcedônia, os Símbolos afirmam que Cristo é uma só pessoa, com duas naturezas completas e distintas, a divina e a humana, unidas inseparavelmente, sem conversão, composição ou confusão.", "R": "CFW 8.2; CM 37", "H": "Uma só pessoa, verdadeiro Deus e verdadeiro homem, com duas naturezas sem confusão nem mistura."}, {"A": "Símbolos de Fé", "D": "media", "T": "Estados de Cristo", "Q": "Qual dos eventos abaixo pertence ao estado de HUMILHAÇÃO de Cristo?", "O": ["A ressurreição", "A ascensão", "O assentar-se à direita do Pai", "O nascimento em condição humilde, sob a lei, e a morte na cruz", "A segunda vinda em glória"], "C": 3, "E": "O estado de humilhação de Cristo compreende sua concepção e nascimento em pobreza, o viver sob a lei, os sofrimentos, a morte de cruz e a permanência sob o poder da morte por um tempo. Ressurreição, ascensão e sessão pertencem à exaltação.", "R": "BC 27-28", "H": "A questão pede um evento de HUMILHAÇÃO; pense no nascimento humilde e na cruz, não na glória."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Escritura", "Q": "Segundo o Breve Catecismo, qual é a coisa principal que as Escrituras nos ensinam?", "O": ["A história do povo de Israel", "O que o homem deve crer a respeito de Deus e o dever que Deus requer do homem", "As leis civis das nações", "A ciência e a origem do cosmos", "As tradições da Igreja primitiva"], "C": 1, "E": "BC 3: as Escrituras principalmente ensinam o que o homem deve crer a respeito de Deus e qual o dever que Deus dele requer. Essas duas partes estruturam todo o catecismo.", "R": "BC 3", "H": "Resume-se ao que devemos crer sobre Deus e ao dever que Deus requer de nós."}, {"A": "Símbolos de Fé", "D": "facil", "T": "Fim do homem", "Q": "Segundo o Breve Catecismo, qual é o fim principal do homem?", "O": ["Alcançar a felicidade material nesta vida", "Glorificar a Deus e gozá-lo para sempre", "Obedecer às autoridades civis", "Deixar um bom nome à posteridade", "Vencer o pecado por esforço próprio"], "C": 1, "E": "BC 1: \"O fim principal do homem é glorificar a Deus e gozá-lo para sempre\". É a primeira e mais conhecida pergunta do catecismo.", "R": "BC 1", "H": "É a resposta 1 do Breve Catecismo, a mais conhecida de todas."}, {"A": "Símbolos de Fé", "D": "media", "T": "Oração / Pai-Nosso", "Q": "Segundo os Catecismos, qual oração é apresentada como regra e modelo de toda oração, também chamada \"Oração Dominical\"?", "O": ["A oração sacerdotal de João 17", "O Pai-Nosso (a oração do Senhor)", "A bênção apostólica", "O Salmo 51", "O Credo Apostólico"], "C": 1, "E": "A \"Oração Dominical\" é o Pai-Nosso, ensinado por Cristo (Mt 6; Lc 11), que os catecismos expõem petição por petição como modelo da oração cristã.", "R": "BC 99-107; CM 186-196", "H": "É a oração-modelo que o próprio Cristo ensinou aos discípulos (Mt 6)."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Juízo final", "Q": "Sobre o juízo final, a Confissão de Fé de Westminster ensina que Deus:", "O": ["Já julgou a todos no momento da morte, não havendo juízo futuro", "Designou um dia em que julgará o mundo em justiça, por Jesus Cristo, quando todos ressuscitarão e comparecerão para receber conforme o que fizeram", "Não revelou nada sobre o tempo ou a certeza desse juízo", "Julgará apenas os homens, ficando os anjos de fora", "Estabeleceu que os réprobos serão aniquilados, sem consciência de castigo"], "C": 1, "E": "A CFW 33 afirma que Deus designou um dia em que julgará o mundo com justiça por meio de Jesus Cristo; nesse dia, apostatas anjos e todos os homens ressuscitados comparecerão para prestar contas e receber conforme o que fizeram, na perpetuidade da glória ou do castigo.", "R": "CFW 33.1-2", "H": "Deus marcou um dia para julgar o mundo em justiça, por Jesus Cristo, com ressurreição geral."}, {"A": "Símbolos de Fé", "D": "media", "T": "Fé salvadora", "Q": "Segundo os Símbolos de Fé, a fé salvadora é:", "O": ["Um mero assentimento intelectual a fatos históricos", "A obra do Espírito no coração, pela qual o pecador crê na verdade da Palavra e, sobretudo, recebe e descansa somente em Cristo para a salvação", "A confiança nas próprias obras e sinceridade", "Uma emoção passageira sem conteúdo doutrinário", "A soma dos méritos acumulados pelo crente"], "C": 1, "E": "A CFW 14 e o BC 86 ensinam que a fé salvadora, obra do Espírito pela Palavra, não é só crer que as promessas são verdadeiras, mas receber e descansar somente em Cristo para justificação, santificação e vida eterna.", "R": "CFW 14; BC 86", "H": "Reveja CFW 14 / BC 86: graça operada pelo Espírito que leva a confiar unicamente no Salvador."}, {"A": "Símbolos de Fé", "D": "media", "T": "Arrependimento", "Q": "Segundo o Breve Catecismo, o arrependimento para a vida é uma graça salvadora pela qual o pecador:", "O": ["Apenas sente remorso pelas consequências de seus atos", "Tendo verdadeiro pesar e ódio ao pecado, dele se converte para Deus, com plena determinação de nova obediência", "Paga por seus pecados com penitências", "Espera passivamente por uma experiência mística", "Confia que o tempo apagará suas faltas"], "C": 1, "E": "BC 87: o arrependimento para a vida é a graça pela qual o pecador, com verdadeira consciência e senso do seu pecado e da misericórdia de Deus em Cristo, com dor e ódio ao pecado, dele se converte para Deus, com o firme propósito de nova obediência.", "R": "BC 87", "H": "Reveja BC 87: envolve tanto o afastamento do pecado quanto a volta a Deus, com propósito de obediência."}, {"A": "Símbolos de Fé", "D": "dificil", "T": "Santificação", "Q": "Segundo a Confissão de Fé de Westminster, a santificação, nesta vida:", "O": ["É completa e perfeita, de modo que o crente deixa de pecar", "É apenas exterior, sem transformação do coração", "É imperfeita nesta vida, permanecendo ainda remanescentes de corrupção em cada parte, do que resulta uma guerra contínua entre a carne e o Espírito", "Depende inteiramente do esforço humano, sem a graça", "Só começa após a morte do crente"], "C": 2, "E": "A CFW 13.2 ensina que a santificação, embora real e por toda a pessoa, é imperfeita nesta vida: subsistem remanescentes de corrupção em cada parte, donde nasce uma guerra contínua e irreconciliável entre a carne e o Espírito. A perfeição só se dá na glória.", "R": "CFW 13.2-3", "H": "Nesta vida ela é imperfeita: restam corrupções, e há guerra contínua entre a carne e o Espírito."}, {"A": "Português", "D": "facil", "T": "Figuras de linguagem", "Q": "Assinale a alternativa em que há uma METÁFORA:", "O": ["Traga-me, por favor, o hinário.", "O pastor é um leão no púlpito.", "Li Calvino durante as férias.", "O sino da igreja tocou três vezes.", "Choveu muito ontem à noite."], "C": 1, "E": "\"O pastor é um leão\" identifica dois termos por semelhança, sem conectivo comparativo: é metáfora. \"Li Calvino\" (a obra pelo autor) seria metonímia.", "R": "Figuras de linguagem: metáfora", "H": "Metáfora é comparação implícita, sem 'como'; procure atribuir a alguém, direto, uma qualidade de outro ser."}, {"A": "Português", "D": "facil", "T": "Figuras de linguagem", "Q": "Em \"Gosto de ler Machado de Assis\", a figura de linguagem presente é:", "O": ["Eufemismo", "Hipérbole", "Metonímia", "Personificação", "Antítese"], "C": 2, "E": "Emprega-se o autor (Machado) no lugar da obra: é metonímia (autor pela obra). Não há exagero (hipérbole) nem atenuação (eufemismo).", "R": "Metonímia (autor pela obra)", "H": "Usar o nome do autor no lugar da obra é substituição por proximidade/associação, não por semelhança."}, {"A": "Português", "D": "dificil", "T": "Figuras de linguagem", "Q": "Assinale a alternativa em que ocorre ANTÍTESE:", "O": ["As ondas gemem ao bater nas pedras.", "Com a alma purificada, ele partiu para a eternidade.", "Longos são os caminhos da fé; curta, a paciência dos homens.", "Chorei rios de lágrimas naquela noite.", "O silêncio gritava dentro da capela."], "C": 2, "E": "A antítese opõe ideias contrárias: \"longos/curta\". A letra E (\"silêncio gritava\") é paradoxo/oximoro; \"rios de lágrimas\" é hipérbole; \"ondas gemem\", personificação.", "R": "Antítese", "H": "A figura aproxima ideias opostas; procure um par de contrários na mesma frase (longo/curto)."}, {"A": "Português", "D": "media", "T": "Ortografia", "Q": "Assinale a alternativa em que TODAS as palavras estão grafadas corretamente:", "O": ["ascensão, excesso, esplendor, exceção", "assenção, eccesso, explendor, esceção", "ascenção, excesso, esplendor, exeção", " assensão, excesso, explendor, exceção", "ascensão, eccesso, esplendor, esceção"], "C": 0, "E": "A grafia correta é: ascensão, excesso, esplendor e exceção. As demais alternativas contêm erros como \"explendor\", \"eccesso\" e \"ascenção\".", "R": "Ortografia", "H": "Atenção a 'sc', 'ss', 'x' e 'ç'; basta uma palavra errada para eliminar a opção inteira."}, {"A": "Português", "D": "dificil", "T": "Acentuação", "Q": "Assinale a alternativa cujas palavras são acentuadas pela MESMA regra de \"saúde\":", "O": ["herói, chapéu, céu", "juízes, saída, baú", "abdômen, hífen, órfão", "matemática, lâmpada, câmara", "português, também, refém"], "C": 1, "E": "\"Saúde\" recebe acento por ser hiato de \"i\"/\"u\" tônicos, sozinhos na sílaba (regra do hiato). \"Juízes, saída, baú\" seguem a mesma regra. \"Herói/chapéu/céu\" são ditongos abertos; \"matemática/lâmpada\" são proparoxítonas.", "R": "Acentuação: hiato", "H": "'Saúde' leva acento no 'u' tônico de hiato; procure i/u tônicos sozinhos na sílaba."}, {"A": "Português", "D": "media", "T": "Estrutura das palavras / afixos", "Q": "Na palavra \"infelizmente\", os elementos mórficos destacados classificam-se, respectivamente, como:", "O": ["radical, prefixo e sufixo", "prefixo, radical e sufixo", "prefixo, sufixo e radical", "radical, sufixo e desinência", "prefixo, radical e desinência"], "C": 1, "E": "Em \"in-feliz-mente\": \"in-\" é prefixo (negação), \"feliz\" é o radical, \"-mente\" é sufixo formador de advérbio. A ordem pedida é prefixo, radical e sufixo.", "R": "Estrutura das palavras", "H": "Identifique a posição: o que vem antes do radical, o radical em si, e o que vem depois."}, {"A": "Português", "D": "media", "T": "Classes de palavras / pronomes", "Q": "Observe: \"Calvino e Lutero foram grandes reformadores; ____ na tradição reformada, ____ na luterana.\" Os pronomes demonstrativos que preenchem corretamente as lacunas são:", "O": ["aquele, este", "este, aquele", "esse, este", "este, esse", "aquele, esse"], "C": 0, "E": "O pronome \"este\" retoma o termo mais próximo (o último citado, Lutero) e \"aquele\", o mais distante (o primeiro, Calvino). Como Calvino aparece antes e liga-se à tradição reformada, usa-se \"aquele\" para ele e \"este\" para Lutero. Logo: aquele (Calvino/reformada), este (Lutero/luterana).", "R": "Pronomes demonstrativos (este/aquele)", "H": "'Este' retoma o mais próximo/último citado; 'aquele', o mais distante/primeiro."}, {"A": "Português", "D": "dificil", "T": "Colocação pronominal", "Q": "Assinale a alternativa em que a colocação pronominal está CORRETA segundo a norma-padrão:", "O": ["Me disseram que o culto começaria mais cedo.", "Nunca vi-o tão dedicado ao ministério.", "Deus abençoar-te-á se perseverares.", "Não diga-me isso agora.", "Todos alegraram-se com a notícia."], "C": 2, "E": "Em \"abençoar-te-á\", emprega-se a mesóclise, correta com verbo no futuro sem fator de próclise. Em A não se inicia frase com pronome oblíquo; em B e D a palavra negativa exige próclise (\"não o vi\", \"não me diga\"); em E o pronome indefinido \"todos\" atrai o pronome (\"todos se alegraram\").", "R": "Colocação pronominal (mesóclise/próclise)", "H": "Com verbo no futuro e sem palavra que atraia o pronome, usa-se o pronome no meio do verbo."}, {"A": "Português", "D": "media", "T": "Concordância verbal", "Q": "Assinale a alternativa que está de acordo com a norma-padrão de concordância:", "O": ["Houveram muitos problemas na reunião do presbitério.", "O preço dos hinários aumentaram bastante.", "Fazem dois anos que ele foi ordenado.", "Existem muitas dúvidas sobre o tema.", "Comprou-se duzentas gramas de incenso."], "C": 3, "E": "\"Existir\" é verbo pessoal e concorda com o sujeito \"muitas dúvidas\": existem. Em A e C, \"haver\" e \"fazer\" (tempo) são impessoais e ficam no singular (houve, faz); em B o núcleo do sujeito é \"preço\" (aumentou); em E, \"duzentas gramas\" exigiria \"duzentos gramas\".", "R": "Concordância verbal (existir/haver/fazer)", "H": "'Existir' concorda com o sujeito e vai ao plural; é o verbo que NÃO fica impessoal."}, {"A": "Português", "D": "dificil", "T": "Regência verbal", "Q": "Assinale a alternativa em que a regência do verbo está de acordo com a norma-padrão:", "O": ["Assisti o culto de ontem inteirinho.", "Prefiro orar do que reclamar.", "Cheguei na igreja atrasado.", "Aspiramos a uma vida de santidade.", "Namoro com a filha do presbítero."], "C": 3, "E": "No sentido de \"almejar\", \"aspirar\" é transitivo indireto e rege a preposição \"a\": aspiramos a uma vida. Em A, \"assistir\" (ver) pede \"a\" (assisti ao culto); em B, prefere-se \"a\" a \"do que\"; em C, \"chegar\" rege \"a\" (cheguei à igreja); em E, \"namorar\" é transitivo direto (namoro a filha).", "R": "Regência verbal (aspirar/assistir/chegar)", "H": "O verbo que significa 'almejar/desejar' exige a preposição 'a'; cuidado com aspirar/assistir/visar."}, {"A": "Português", "D": "media", "T": "Vozes verbais", "Q": "Transpondo para a voz passiva a oração \"Os presbíteros ordenarão o novo pastor\", obtém-se:", "O": ["O novo pastor foi ordenado pelos presbíteros.", "O novo pastor será ordenado pelos presbíteros.", "O novo pastor ordenar-se-ia pelos presbíteros.", "Ordenaram o novo pastor.", "O novo pastor tinha sido ordenado pelos presbíteros."], "C": 1, "E": "O verbo está no futuro do presente (ordenarão); a voz passiva mantém o tempo: \"será ordenado\". O objeto direto (\"o novo pastor\") vira sujeito paciente.", "R": "Voz passiva analítica", "H": "Na voz passiva, o objeto vira sujeito e o verbo ganha 'ser' + particípio."}, {"A": "Português", "D": "media", "T": "Sujeito", "Q": "Na oração \"Anunciaram grandes novidades no culto\", o sujeito classifica-se como:", "O": ["simples", "composto", "oculto (elíptico)", "indeterminado", "inexistente (oração sem sujeito)"], "C": 3, "E": "O verbo está na 3ª pessoa do plural sem referência a sujeito expresso ou identificável no contexto: sujeito indeterminado. Não há sujeito oculto, pois não se recupera uma pessoa determinada.", "R": "Sujeito indeterminado", "H": "Verbo na 3ª pessoa do plural, sem sujeito expresso e sem a quem se referir, indica um tipo específico de sujeito."}, {"A": "Português", "D": "dificil", "T": "Tipos de oração subordinada", "Q": "Na frase \"É necessário que os candidatos estudem os Símbolos de Fé\", a oração destacada é subordinada substantiva:", "O": ["objetiva direta", "subjetiva", "predicativa", "completiva nominal", "apositiva"], "C": 1, "E": "A oração \"que os candidatos estudem...\" funciona como sujeito da expressão \"é necessário\" (verbo de ligação + predicativo). Trata-se de oração subordinada substantiva subjetiva.", "R": "Oração subordinada substantiva subjetiva", "H": "Se a oração exerce a função de sujeito do 'É necessário', ela recebe um nome específico."}, {"A": "Português", "D": "dificil", "T": "Tipos de oração subordinada", "Q": "Em \"Fizeram a seguinte advertência: que o trabalho fosse concluído a tempo\", a oração após os dois-pontos é subordinada substantiva:", "O": ["subjetiva", "objetiva direta", "predicativa", "completiva nominal", "apositiva"], "C": 4, "E": "A oração explica/especifica o termo anterior \"a seguinte advertência\", funcionando como aposto: é subordinada substantiva apositiva, geralmente introduzida por dois-pontos.", "R": "Oração subordinada substantiva apositiva", "H": "A oração depois dos dois-pontos explica/equivale a um termo anterior: exerce função de aposto."}, {"A": "Português", "D": "media", "T": "Predicado", "Q": "Assinale a oração cujo predicado é VERBO-NOMINAL:", "O": ["As crianças cantaram o hino.", "Os fiéis permaneceram em silêncio.", "Os missionários voltaram cansados da viagem.", "Nós conhecemos as regras do processo.", "O culto terminou tarde."], "C": 2, "E": "Em \"voltaram cansados\" há um verbo nocional (voltaram) e um predicativo do sujeito (cansados): predicado verbo-nominal. \"Permaneceram em silêncio\" tem verbo de ligação (predicado nominal); as demais são verbais.", "R": "Predicado verbo-nominal", "H": "Procure o predicado que soma ação do verbo + estado do sujeito (voltaram + como voltaram)."}, {"A": "Português", "D": "media", "T": "Sintaxe do período", "Q": "No período \"No princípio, criou Deus os céus e a terra\", assinale a análise INCORRETA:", "O": ["\"No princípio\" é adjunto adverbial.", "\"Deus\" é o sujeito simples da oração.", "\"os céus e a terra\" é objeto direto.", "\"criou\" é verbo transitivo indireto.", "A ordem está invertida, com o sujeito posposto ao verbo."], "C": 3, "E": "\"Criou\" pede complemento sem preposição (\"os céus e a terra\"): é transitivo DIRETO, não indireto. As demais análises estão corretas.", "R": "Transitividade verbal / análise sintática", "H": "'Criou' pede objeto direto ('os céus e a terra'); ache a análise que classifica esse verbo errado."}, {"A": "Português", "D": "media", "T": "Pontuação", "Q": "Assinale a alternativa corretamente pontuada:", "O": ["O pastor que chegou ontem, pregará hoje.", "Irmãos, oremos pela paz da Igreja.", "Deus, é fiel e cumpre suas promessas.", "Quando terminou o culto todos saíram, em silêncio.", "Ele disse, que voltaria logo."], "C": 1, "E": "Em B, a vírgula isola corretamente o vocativo \"Irmãos\". Em C, separa-se indevidamente sujeito de verbo; em E, não se separa oração objetiva direta por vírgula; em A e D a pontuação está mal empregada.", "R": "Pontuação: vocativo", "H": "O chamamento (vocativo) deve vir isolado por vírgula."}, {"A": "Português", "D": "facil", "T": "Classes de palavras / conjunções", "Q": "Em \"Estudou muito; portanto, foi aprovado no processo\", a palavra destacada é conjunção coordenativa:", "O": ["aditiva", "adversativa", "alternativa", "conclusiva", "explicativa"], "C": 3, "E": "\"Portanto\" introduz uma conclusão decorrente do que foi dito: conjunção coordenativa conclusiva (como \"logo\", \"por isso\", \"pois\" posposto).", "R": "Conjunções coordenativas conclusivas", "H": "'Portanto' indica conclusão; pense na relação lógica entre estudar muito e ser aprovado."}, {"A": "Português", "D": "dificil", "T": "Interpretação / coesão", "Q": "\"Não que ele fosse ímpio; era, antes, um homem religioso à sua maneira, embora avesso a qualquer disciplina.\" O uso de \"antes\", nesse contexto, expressa ideia de:", "O": ["tempo anterior", "retificação/oposição (pelo contrário)", "causa", "conclusão", "condição"], "C": 1, "E": "Aqui \"antes\" não indica tempo, mas retificação: equivale a \"pelo contrário\", corrigindo a afirmação anterior. É valor adversativo/retificativo.", "R": "Coesão: valor semântico de conectivos", "H": "'Antes' equivale aqui a 'pelo contrário'; marca correção/oposição ao que se disse."}, {"A": "Português", "D": "media", "T": "Interpretação de texto", "Q": "\"Faça o que eu mando e não se arrependerá.\" A relação de sentido estabelecida entre as duas orações é de:", "O": ["oposição", "alternância", "condição", "explicação", "comparação"], "C": 2, "E": "A primeira oração enuncia uma condição (\"se você fizer o que mando\") para o resultado da segunda; equivale a \"Se fizer o que mando, não se arrependerá\": relação condicional.", "R": "Relações de sentido: condição", "H": "'Faça... e não se arrependerá' equivale a 'se você fizer, não se arrependerá'; identifique que relação lógica isso expressa."}, {"A": "Literatura", "D": "facil", "T": "A Hora da Estrela - enredo", "Q": "Em \"A Hora da Estrela\", de Clarice Lispector, a protagonista Macabéa é caracterizada como:", "O": ["Uma rica herdeira carioca", "Uma jovem nordestina, pobre e datilógrafa, migrante no Rio de Janeiro", "Uma atriz de teatro famosa", "Uma professora universitária", "Uma freira que abandona o convento"], "C": 1, "E": "Macabéa é uma moça nordestina (alagoana), órfã, pobre, subnutrida e quase invisível socialmente, que trabalha como datilógrafa no Rio de Janeiro. Sua insignificância é o centro do romance.", "R": "A Hora da Estrela", "H": "Lembre da origem e do ofício dela: veio do Nordeste e trabalhava batendo à máquina no Rio."}, {"A": "Literatura", "D": "dificil", "T": "A Hora da Estrela - narrador", "Q": "O narrador de \"A Hora da Estrela\" apresenta uma peculiaridade estrutural marcante. Assinale-a:", "O": ["É a própria Macabéa que narra sua história em primeira pessoa", "É um narrador onisciente neutro que se apaga por completo", "É Rodrigo S.M., escritor fictício que reflete sobre a dificuldade de narrar uma vida tão insignificante, expondo o próprio ato de escrever", "É um narrador coletivo, representando o povo nordestino", "É Olímpico, o namorado, quem conta os fatos"], "C": 2, "E": "O narrador é Rodrigo S.M., um autor-personagem masculino que interrompe a narrativa para discutir a própria criação, a responsabilidade de escrever sobre Macabéa e sua angústia diante dela. Esse caráter metalinguístico é central na obra.", "R": "A Hora da Estrela: narrador Rodrigo S.M.", "H": "Quem narra é um escritor fictício, homem, que reflete sobre a própria dificuldade de contar essa história."}, {"A": "Literatura", "D": "media", "T": "A Hora da Estrela - personagens", "Q": "Por quem Olímpico de Jesus, namorado de Macabéa, acaba deixando-a?", "O": ["Por Madame Carlota, a cartomante", "Por Glória, colega de trabalho de Macabéa", "Por uma prima que vem do Nordeste", "Pela patroa da firma onde trabalhavam", "Por ninguém; permanece com Macabéa até o fim"], "C": 1, "E": "Olímpico troca Macabéa por Glória, colega de trabalho dela, mais \"cheia de corpo\", carioca e socialmente mais habilidosa. O abandono aprofunda a solidão da protagonista.", "R": "A Hora da Estrela", "H": "Ele a troca por uma colega de trabalho dela, a mesma que depois a leva à cartomante."}, {"A": "Literatura", "D": "media", "T": "A Hora da Estrela - enredo", "Q": "Qual é o desfecho da personagem Macabéa, que dá sentido ao título \"A Hora da Estrela\"?", "O": ["Ela enriquece e se muda para o exterior, como previra a cartomante", "Ela é atropelada por um carro (um Mercedes amarelo) logo após consultar a cartomante, e morre", "Ela se casa com Olímpico e volta para Alagoas", "Ela se torna atriz de rádio", "Ela desiste do Rio e retorna ao sertão"], "C": 1, "E": "Depois de a cartomante Madame Carlota lhe prever um futuro grandioso, Macabéa é atropelada por um carro de luxo e morre na sarjeta. A \"hora da estrela\" é, ironicamente, a hora da morte, quando a personagem enfim \"brilha\".", "R": "A Hora da Estrela: desfecho", "H": "Logo após deixar a cartomante, cheia de esperança, ela sofre um acidente na rua."}, {"A": "Literatura", "D": "dificil", "T": "A Hora da Estrela - temas", "Q": "Considerando o conjunto da obra, o principal recurso de que Clarice se vale para provocar reflexão sobre Macabéa é:", "O": ["O exagero heroico da protagonista", "A ironia e o contraste entre a insignificância da personagem e a grandiloquência dos títulos e das promessas feitas a ela", "A idealização romântica do amor", "O tom épico de exaltação do Nordeste", "A ausência total de qualquer julgamento por parte do narrador"], "C": 1, "E": "A obra é construída sobre a ironia: a vida mínima e anônima de Macabéa contrasta com os treze títulos possíveis do livro, com a promessa de um futuro grandioso e com a \"estrela\" do título. Esse contraste denuncia a invisibilidade social.", "R": "A Hora da Estrela: ironia e crítica social", "H": "O efeito vem do contraste entre a insignificância da vida dela e a grandiloquência do título."}, {"A": "Literatura", "D": "media", "T": "A Hora da Estrela - personagens", "Q": "O que a cartomante Madame Carlota prevê a Macabéa pouco antes de sua morte?", "O": ["Que ela morreria naquele mesmo dia", "Que sua vida continuaria pobre e sofrida", "Que sua vida mudaria radicalmente para melhor, com um casamento com um estrangeiro rico chamado Hans", "Que ela deveria voltar imediatamente ao Nordeste", "Que perderia o emprego de datilógrafa"], "C": 2, "E": "Madame Carlota prevê uma reviravolta feliz: um futuro próspero e o casamento com um estrangeiro rico (Hans). A ironia trágica está em que, ao sair esperançosa da consulta, Macabéa é atropelada e morre.", "R": "A Hora da Estrela: Madame Carlota", "H": "A cartomante prevê, ironicamente, uma virada feliz e um casamento com estrangeiro rico, pouco antes do fim."}, {"A": "Literatura", "D": "dificil", "T": "A Hora da Estrela - estrutura", "Q": "O caráter metalinguístico de \"A Hora da Estrela\" manifesta-se principalmente porque a obra:", "O": ["Utiliza apenas versos e formas poéticas fixas", "Reflete sobre o próprio processo de criação literária, discutindo como e por que se narra a história de Macabéa", "Reproduz fielmente um documentário jornalístico", "Ignora completamente a figura do narrador", "Baseia-se em fatos históricos datados com precisão"], "C": 1, "E": "Metalinguagem é a linguagem que fala de si mesma. Em A Hora da Estrela, o narrador Rodrigo S.M. discute continuamente o ato de escrever, as escolhas narrativas e sua angústia criativa, tornando o próprio fazer literário um tema da obra.", "R": "A Hora da Estrela: metalinguagem", "H": "A obra fala do próprio ato de escrever: o narrador discute como e por que narra."}, {"A": "Literatura", "D": "media", "T": "A Hora da Estrela - contexto", "Q": "Um dos temas sociais centrais explorados por Clarice em torno de Macabéa é:", "O": ["A ascensão da burguesia industrial paulista", "A marginalização e a invisibilidade do migrante nordestino pobre nos grandes centros urbanos", "A vida da aristocracia rural do café", "As lutas operárias sindicais organizadas", "A colonização do interior amazônico"], "C": 1, "E": "Macabéa encarna o migrante nordestino pobre, sem voz e quase invisível na cidade grande. A obra expõe, com sutileza e ironia, a exclusão social e a desumanização a que essas pessoas estão submetidas.", "R": "A Hora da Estrela: crítica social", "H": "O tema social é a invisibilidade do migrante nordestino pobre no grande centro urbano."}, {"A": "Literatura", "D": "media", "T": "A Hora da Estrela - personagens", "Q": "A relação entre Macabéa e Olímpico de Jesus pode ser mais bem descrita como:", "O": ["Um romance idealizado e correspondido, cheio de afeto", "Um relacionamento marcado por desencontros, incompreensão e frieza, em que Olímpico despreza a ingenuidade de Macabéa", "Uma amizade puramente fraterna", "Um casamento arranjado pelas famílias", "Uma parceria de trabalho bem-sucedida"], "C": 1, "E": "O namoro é feito de diálogos absurdos e desencontrados; Olímpico, ambicioso e pretensioso, trata Macabéa com impaciência e desprezo, evidenciando a solidão e a inadequação da moça mesmo quando acompanhada.", "R": "A Hora da Estrela: Macabéa e Olímpico", "H": "A relação é de desencontro e frieza; ele a despreza e é movido pela ambição."}, {"A": "Literatura", "D": "dificil", "T": "A Hora da Estrela - interpretação", "Q": "Ao longo da narrativa, o narrador Rodrigo S.M. demonstra, em relação a Macabéa, uma atitude que oscila entre:", "O": ["Ódio e vingança", "Compaixão e incômodo, misturando piedade pela personagem e angústia por ter de dar-lhe existência", "Total indiferença e desprezo", "Admiração heroica e idolatria", "Desejo amoroso e ciúme"], "C": 1, "E": "Rodrigo S.M. sente-se ao mesmo tempo responsável e desconfortável diante de Macabéa: há piedade, identificação e também mal-estar por conferir vida literária a alguém tão desamparado. Essa ambivalência tensiona toda a narração.", "R": "A Hora da Estrela: narrador e personagem", "H": "O narrador oscila entre piedade pela personagem e incômodo por ter de lhe dar existência."}, {"A": "Literatura", "D": "media", "T": "Brás Cubas - narrador", "Q": "Qual é a característica singular do narrador de \"Memórias Póstumas de Brás Cubas\"?", "O": ["É um narrador-observador que nunca participou dos fatos", "É um \"defunto autor\": Brás Cubas narra sua própria vida já morto, escrevendo do além-túmulo", "É um narrador infantil e ingênuo", "É a personagem Virgília quem narra", "É um narrador coletivo da sociedade carioca"], "C": 1, "E": "A obra inaugura a expressão \"defunto autor\": não é um autor defunto, mas um defunto que se fez autor. Brás Cubas escreve suas memórias depois de morto, o que lhe dá liberdade irônica e distanciamento crítico.", "R": "Memórias Póstumas: defunto autor", "H": "A singularidade está na posição impossível de quem escreve: ele conta a própria vida a partir de além da sepultura."}, {"A": "Literatura", "D": "facil", "T": "Brás Cubas - contexto", "Q": "\"Memórias Póstumas de Brás Cubas\", de Machado de Assis, é considerado o marco inaugural de qual movimento literário no Brasil?", "O": ["Romantismo", "Realismo", "Barroco", "Arcadismo", "Modernismo"], "C": 1, "E": "Publicado em 1881, o romance inaugura o Realismo brasileiro, rompendo com a idealização romântica por meio da análise crítica, irônica e pessimista da sociedade e da natureza humana.", "R": "Memórias Póstumas: Realismo (1881)", "H": "Publicado em 1881, inaugura no Brasil a escola literária que sucede o Romantismo."}, {"A": "Literatura", "D": "dificil", "T": "Brás Cubas - personagens", "Q": "Virgília, figura central na vida de Brás Cubas, caracteriza-se como:", "O": ["A esposa legítima de Brás Cubas", "O grande amor de Brás Cubas, com quem ele mantém um caso adúltero enquanto ela é casada com Lobo Neves", "Uma irmã de criação do narrador", "A cartomante que lhe prevê o futuro", "Uma antiga escrava da família Cubas"], "C": 1, "E": "Virgília, que quase se casara com Brás Cubas, torna-se esposa do político Lobo Neves; ainda assim, mantém com o narrador um longo caso adúltero, tema por meio do qual Machado ironiza a moral da elite.", "R": "Memórias Póstumas: Virgília e Lobo Neves", "H": "É o grande amor adúltero do protagonista, casada com um político ambicioso (Lobo Neves)."}, {"A": "Literatura", "D": "dificil", "T": "Brás Cubas - temas", "Q": "A célebre frase que encerra o romance, \"Não tive filhos, não transmiti a nenhuma criatura o legado da nossa miséria\", exprime:", "O": ["A alegria de uma vida plenamente realizada", "O pessimismo e a ironia do \"balanço\" negativo da existência, em que o único \"saldo\" positivo é nada ter legado à posteridade", "O arrependimento religioso do narrador", "O elogio à instituição familiar", "Uma defesa entusiástica do casamento"], "C": 1, "E": "No último capítulo (\"Das negativas\"), Brás Cubas faz o balanço da vida em termos de negativas; a ausência de filhos, vista como não perpetuar a \"miséria\" humana, é apresentada como pequeno \"saldo positivo\", num remate profundamente pessimista e irônico.", "R": "Memórias Póstumas: cap. \"Das negativas\"", "H": "O 'saldo' final é não ter transmitido a ninguém o legado da miséria: puro pessimismo irônico."}, {"A": "Literatura", "D": "media", "T": "Brás Cubas - personagens", "Q": "O amigo de Brás Cubas, criador da filosofia do \"Humanitismo\", cujo lema é \"Ao vencedor, as batatas\", chama-se:", "O": ["Lobo Neves", "Quincas Borba", "Cotrim", "Damasceno", "Vilaça"], "C": 1, "E": "Quincas Borba formula o \"Humanitismo\", filosofia que satiriza correntes como o positivismo e o darwinismo social; a máxima \"Ao vencedor, as batatas\" resume a lei da luta pela sobrevivência dos mais fortes.", "R": "Memórias Póstumas: Quincas Borba / Humanitismo", "H": "O amigo filósofo do 'Humanitismo', autor do lema 'Ao vencedor, as batatas'."}, {"A": "Literatura", "D": "dificil", "T": "Brás Cubas - estrutura", "Q": "Quanto à estrutura narrativa, \"Memórias Póstumas de Brás Cubas\" caracteriza-se por:", "O": ["Uma narrativa linear, cronológica e sem interrupções", "Capítulos curtos, digressivos e não lineares, com frequente diálogo irônico com o leitor", "Um único e longo capítulo sem divisões", "O uso exclusivo de versos", "A completa ausência de narrador"], "C": 1, "E": "O romance é composto de muitos capítulos curtos, com digressões, saltos temporais e interpelações diretas ao leitor. Machado adota uma \"forma livre\", influenciada por Sterne, que quebra a linearidade e reforça a ironia.", "R": "Memórias Póstumas: forma livre e digressiva", "H": "Pense na forma incomum do romance: seções breves, cheias de desvios, com o narrador interpelando quem lê."}, {"A": "Literatura", "D": "media", "T": "Brás Cubas - personagens", "Q": "Marcela, um dos amores da juventude de Brás Cubas, é lembrada pela frase de que \"amou o narrador durante quinze meses e...\":", "O": ["um punhado de poemas", "onze contos de réis", "três longas cartas", "uma vida inteira", "um só verão"], "C": 1, "E": "A frase irônica \"Marcela amou-me durante quinze meses e onze contos de réis\" resume a relação interesseira: o afeto de Marcela media-se em dinheiro. É exemplo típico do humor cético machadiano.", "R": "Memórias Póstumas: Marcela", "H": "A frase mede o tempo do amor dela por uma quantia em dinheiro."}, {"A": "Literatura", "D": "dificil", "T": "Brás Cubas - ironia", "Q": "A dedicatória \"Ao verme que primeiro roeu as frias carnes do meu cadáver dedico como saudosa lembrança estas Memórias Póstumas\" evidencia, logo de início:", "O": ["O tom sentimental e romântico da obra", "O humor macabro e a ironia que marcarão toda a narrativa do defunto autor", "Uma homenagem religiosa aos mortos", "A intenção didático-moralizante do livro", "Um protesto político explícito"], "C": 1, "E": "A dedicatória ao verme instaura, desde a abertura, o humor macabro e a ironia corrosiva que percorrem o livro, coerentes com a perspectiva de um narrador que fala de além-túmulo.", "R": "Memórias Póstumas: dedicatória", "H": "A dedicatória ao verme já anuncia o humor macabro e irônico de todo o livro."}, {"A": "Literatura", "D": "media", "T": "Brás Cubas - personagens", "Q": "Eugênia, personagem por quem Brás Cubas chega a se interessar, é descrita como \"a flor da moita\" e apresenta a particularidade de ser:", "O": ["Cega", "Coxa (manca)", "Muda", "Estrangeira", "Muito idosa"], "C": 1, "E": "Eugênia, moça pobre e digna, é coxa (manca) de nascença. Brás Cubas a rejeita por causa disso, num episódio que revela seu egoísmo e o preconceito social, tema caro ao Realismo machadiano.", "R": "Memórias Póstumas: Eugênia", "H": "'A flor da moita' tinha um defeito físico que a marcava: uma perna."}, {"A": "Literatura", "D": "dificil", "T": "Brás Cubas - temas", "Q": "A ideia fixa do \"emplasto Brás Cubas\", perseguida pelo protagonista, simboliza sobretudo:", "O": ["Sua dedicação altruísta à cura dos pobres", "Sua vaidade e o desejo de notoriedade, isto é, a busca vã de glória e reconhecimento", "Sua fé religiosa profunda", "Seu talento científico comprovado", "Seu amor incondicional por Virgília"], "C": 1, "E": "O \"emplasto\", suposto remédio contra a melancolia, é a \"ideia fixa\" que traduz a vaidade de Brás Cubas: ele deseja um invento que lhe dê fama e nome. O projeto, jamais concretizado, ironiza a busca vazia de glória.", "R": "Memórias Póstumas: o emplasto", "H": "O invento que o protagonista persegue obsessivamente representa seu anseio por fama e prestígio."}, {"A": "Inglês", "D": "facil", "T": "Formas plurais", "Q": "What is the correct plural of the word \"tooth\"?", "O": ["tooths", "toothes", "teeth", "teeths", "tiths"], "C": 2, "E": "\"Tooth\" tem plural irregular: \"teeth\". Outros plurais irregulares comuns: man/men, foot/feet, child/children.", "R": "Irregular plurals", "H": "'Tooth' tem plural irregular, com mudança da vogal interna."}, {"A": "Inglês", "D": "facil", "T": "Comparativo", "Q": "Choose the comparative of superiority of the adjective \"big\":", "O": ["biger", "more big", "bigest", "biggest", "bigger"], "C": 4, "E": "Adjetivos curtos formam o comparativo com -er, dobrando a consoante final quando precedida de vogal: big → bigger. \"Biggest\" é o superlativo.", "R": "Comparatives of short adjectives", "H": "Adjetivo curto terminado em consoante dobra a última letra e recebe '-er'."}, {"A": "Inglês", "D": "facil", "T": "Verbo to be", "Q": "Complete correctly: \"How ______ you? I ______ twenty years old.\"", "O": ["are / am", "is / are", "are / is", "am / are", "do / am"], "C": 0, "E": "Com o pronome \"you\" usa-se \"are\" (How old are you?); com \"I\", usa-se \"am\" (I am twenty years old). Idade em inglês emprega o verbo to be.", "R": "Verb to be (present)", "H": "'You' combina com uma forma do verbo to be; 'I' combina com outra."}, {"A": "Inglês", "D": "media", "T": "Tempos verbais", "Q": "Choose the option that correctly completes: \"Yesterday, we ______ to the church and ______ a beautiful hymn.\"", "O": ["go / sing", "went / sang", "gone / sung", "goes / sings", "were going / sing"], "C": 1, "E": "O advérbio \"yesterday\" pede o passado simples. Os verbos irregulares go e sing têm passado \"went\" e \"sang\".", "R": "Simple past (irregular verbs)", "H": "Ambos são irregulares no passado: 'go' e 'sing' mudam de forma e não recebem -ed."}, {"A": "Inglês", "D": "media", "T": "Formas negativas", "Q": "Choose the correct negative form of the sentence \"He believes in God.\"", "O": ["He no believes in God.", "He doesn't believe in God.", "He don't believes in God.", "He isn't believe in God.", "He not believe in God."], "C": 1, "E": "No presente simples, a negativa com sujeito de 3ª pessoa do singular usa \"doesn't\" + verbo no infinitivo sem \"to\": He doesn't believe. O \"s\" da 3ª pessoa sai do verbo principal.", "R": "Present simple: negative", "H": "No presente simples, a negativa na 3ª pessoa usa 'does not' + verbo no infinitivo sem 's'."}, {"A": "Inglês", "D": "dificil", "T": "Referência pronominal", "Q": "Read: \"It is not clear how Paul supported himself on his journeys. Luke calls him a tent-maker.\" The pronoun \"him\" refers to:", "O": ["Luke", "Paul", "the journey", "the reader", "the tent"], "C": 1, "E": "\"Luke calls him a tent-maker\": \"him\" retoma Paul, sujeito da primeira frase. Lucas (Luke) é o sujeito de \"calls\", e \"him\" (objeto) refere-se a Paulo.", "R": "Pronoun reference", "H": "O pronome 'him' retoma a pessoa masculina citada antes na frase."}, {"A": "Inglês", "D": "dificil", "T": "Coesão / conectivos", "Q": "Choose the connective that best completes the sentence: \"Paul had many chances to preach to the Jews, ______ there were millions of Jews living abroad in the first century.\"", "O": ["but", "then", "however", "since", "although"], "C": 3, "E": "O contexto pede uma explicação/causa: \"since\" (visto que/porque). \"But\", \"however\" e \"although\" indicariam contraste, o que não cabe aqui.", "R": "Connectives: cause (since)", "H": "O conectivo introduz a causa/razão ('já que', 'porque')."}, {"A": "Inglês", "D": "media", "T": "Tradução / vocabulário", "Q": "Choose the correct translation of the sentence: \"Paul's letters, not the Gospels, give us the earliest information we have about Jesus.\"", "O": ["As cartas de Paulo e os evangelhos nos dão informações recentes sobre Jesus.", "Nos evangelhos, Paulo nos dá informações sobre Jesus.", "As cartas de Paulo, não os evangelhos, nos dão as informações mais antigas que temos sobre Jesus.", "A letra de Paulo nos evangelhos é a mais antiga sobre Jesus.", "Paulo escreveu os evangelhos com informações sobre Jesus."], "C": 2, "E": "\"Letters\" = cartas; \"earliest\" = as mais antigas/primeiras. A tradução correta contrasta as cartas de Paulo com os evangelhos, afirmando que aquelas trazem as informações mais antigas sobre Jesus.", "R": "Translation / vocabulary (earliest)", "H": "'Earliest' é superlativo de 'early': trata-se da informação 'mais antiga'."}, {"A": "Inglês", "D": "dificil", "T": "Interpretação de texto", "Q": "Read: \"We are living in a critical time in which spirituality in the church is near an all-time low and immorality in society is near an all-time high. The pulpits have lost their influence upon society because they have let the world into the church.\" According to the text, it is correct to say that:", "O": ["Church spirituality is at its highest, and immorality is falling.", "Spirituality in the church is very low and immorality very high, because the pulpits have lost influence by letting the world into the church.", "The church strongly influences society and keeps it moral.", "Immorality is low because the world stays outside the church.", "Pulpits have gained influence over society."], "C": 1, "E": "\"All-time low\" (mínimo histórico) para a espiritualidade e \"all-time high\" (máximo histórico) para a imoralidade; os púlpitos perderam influência \"because they have let the world into the church\". A alternativa correta reproduz essas ideias.", "R": "Reading comprehension", "H": "Siga a relação de causa no texto: o baixo nível espiritual está ligado ao que falta nos púlpitos."}, {"A": "Inglês", "D": "facil", "T": "Vocabulário / morfologia", "Q": "In the sentence \"The early church believed preaching was the main way of sharing God's plan of salvation\", the underlined expression \"the early church\" is best translated as:", "O": ["a igreja matutina", "a igreja primitiva", "cedo na igreja", "a igreja da manhã", "a igreja-mãe"], "C": 1, "E": "\"Early church\" refere-se à igreja primitiva, dos primeiros séculos do cristianismo. \"Early\" aqui tem sentido de \"antiga/primitiva\", não de \"manhã\".", "R": "Vocabulary: early church", "H": "'Early church' refere-se à igreja dos primeiros séculos do cristianismo."}, {"A": "Inglês", "D": "media", "T": "Classes de palavras", "Q": "Read: \"My sheep listen to my voice; I know them, and they follow me.\" (John 10.27). The words \"listen\", \"know\" and \"follow\" are, respectively:", "O": ["a noun, a verb and an adjective", "all verbs", "all nouns", "an adjective, a verb and a noun", "a verb, a noun and a verb"], "C": 1, "E": "\"Listen\", \"know\" e \"follow\" são todos verbos (ações praticadas pelo sujeito). Nenhum funciona como substantivo ou adjetivo nesse contexto.", "R": "Word classes: verbs", "H": "'Listen', 'know' e 'follow' exprimem ações; pertencem todas à mesma classe gramatical."}, {"A": "Inglês", "D": "dificil", "T": "Verbos irregulares", "Q": "Read: \"One thing I do know: I was blind, but now I see.\" (John 9.25). About the verbs \"was\" and \"see\", it is correct to say:", "O": ["Both are regular verbs in the present tense.", "\"Was\" is the past of \"to be\" and \"see\" is an irregular verb in the present tense.", "Both are nouns.", "\"See\" is in the past tense.", "Both are in the future tense."], "C": 1, "E": "\"Was\" é o passado do verbo irregular \"to be\"; \"see\" está no presente (\"now I see\"). A frase contrasta o passado (\"I was blind\") com o presente (\"now I see\").", "R": "Verb tenses (to be / see)", "H": "Analise cada verbo separadamente: um está no passado (forma de to be) e o outro, no presente."}, {"A": "Inglês", "D": "media", "T": "Vocabulário (tradução de listas)", "Q": "Choose the alternative that correctly translates, in order: \"cristão – vizinho – saber – rei – quinta-feira\".", "O": ["Christian – death – to know – king – Tuesday", "Christian – neighbour – to know – king – Thursday", "Christianity – neighbour – to see – king – Tuesday", "Christian – neighbour – to see – queen – Thursday", "Christian – neighbourhood – to know – king – Tuesday"], "C": 1, "E": "Christian (cristão), neighbour (vizinho), to know (saber), king (rei), Thursday (quinta-feira). Cuidado: \"neighbourhood\" = vizinhança; \"to see\" = ver; \"Tuesday\" = terça-feira.", "R": "Vocabulary", "H": "Traduza item por item e confira a ordem exata da lista."}, {"A": "Inglês", "D": "facil", "T": "Artigos", "Q": "Choose the correct article: \"He is ______ honest man and ______ faithful pastor.\"", "O": ["a / a", "an / a", "a / an", "an / an", "the / a"], "C": 1, "E": "Usa-se \"an\" antes de som de vogal: \"honest\" começa com \"h\" mudo, som de vogal → an honest man. \"Faithful\" começa com som de consoante → a faithful pastor.", "R": "Articles a/an", "H": "Use 'an' antes de som de vogal (o 'h' de honest é mudo) e 'a' antes de som de consoante."}, {"A": "Inglês", "D": "media", "T": "Preposições", "Q": "Complete: \"We will meet ______ Sunday ______ the morning, ______ ten o'clock.\"", "O": ["in / on / at", "on / in / at", "at / on / in", "on / at / in", "in / at / on"], "C": 1, "E": "Regra das preposições de tempo: \"on\" para dias (on Sunday), \"in\" para partes do dia (in the morning) e \"at\" para horas exatas (at ten o'clock).", "R": "Prepositions of time (in/on/at)", "H": "Dias da semana pedem 'on'; partes do dia, 'in'; horas exatas, 'at'."}, {"A": "Inglês", "D": "dificil", "T": "Interpretação de texto", "Q": "Read: \"At first, Augustine was interested only in Ambrose's eloquent style rather than in the content of his sermons. But gradually he came to see that the Catholic faith could be maintained on reasonable grounds.\" According to the text:", "O": ["Augustine never listened to Ambrose.", "Augustine was first attracted by Ambrose's eloquence and only later persuaded by the reasonableness of the faith.", "Augustine rejected the faith completely.", "Ambrose stopped preaching to Augustine.", "Augustine cared only about content, never about style."], "C": 1, "E": "O texto diz que Agostinho, a princípio, interessou-se apenas pelo estilo eloquente de Ambrósio (\"at first... only in... style\") e, aos poucos (\"gradually\"), passou a ver que a fé podia ser defendida racionalmente.", "R": "Reading comprehension (Augustine)", "H": "O texto diz que Agostinho foi atraído primeiro pelo estilo e só depois convencido pelo conteúdo."}, {"A": "Inglês", "D": "media", "T": "Expressões idiomáticas", "Q": "Choose the best meaning of the idiom in: \"When his old car broke down again, he decided it was time to face the music and buy a new one.\"", "O": ["to listen to a song", "to accept and deal with the consequences of a situation", "to play a musical instrument", "to run away from a problem", "to sell something quickly"], "C": 1, "E": "\"To face the music\" é uma expressão idiomática que significa encarar as consequências de uma situação difícil, assumir a responsabilidade. Não tem relação literal com música.", "R": "Idioms: face the music", "H": "'Face the music' significa encarar as consequências de uma situação."}, {"A": "Inglês", "D": "media", "T": "Modais / verbos defectivos", "Q": "Choose the sentence that expresses obligation correctly:", "O": ["You must to study the Bible every day.", "You must study the Bible every day.", "You musts study the Bible every day.", "You must studying the Bible every day.", "You must studied the Bible every day."], "C": 1, "E": "O verbo modal \"must\" é seguido do verbo principal no infinitivo sem \"to\" e não varia em pessoa: You must study. As demais formas violam a estrutura dos modais.", "R": "Modal verbs (must)", "H": "'Must' expressa obrigação forte; procure a frase que impõe um dever."}, {"A": "Inglês", "D": "facil", "T": "Interrogativas", "Q": "Choose the correct question for the answer \"She likes to read the Psalms.\"", "O": ["What does she likes to read?", "What she does like to read?", "What does she like to read?", "What do she like to read?", "What she likes to read?"], "C": 2, "E": "Em perguntas no presente simples com 3ª pessoa do singular, usa-se o auxiliar \"does\" e o verbo principal no infinitivo: What does she like to read? O \"s\" fica no auxiliar, não no verbo principal.", "R": "Interrogative form (present simple)", "H": "A resposta fala do que ela gosta de ler; a pergunta deve começar por 'What does she like...?'."}, {"A": "Inglês", "D": "dificil", "T": "Morfologia / afixos", "Q": "In the word \"unfaithfulness\", the prefix and the suffixes indicate that the word means:", "O": ["the state of being full of faith", "the quality of not being faithful", "someone who has great faith", "the act of believing again", "a place full of faithful people"], "C": 1, "E": "\"un-\" (prefixo de negação) + \"faith\" (fé) + \"-ful\" (cheio de) + \"-ness\" (estado/qualidade). O conjunto significa o estado/qualidade de não ser fiel: infidelidade.", "R": "Affixes (un-/-ful/-ness)", "H": "'un-' nega, '-ful' indica 'cheio de', '-ness' forma substantivo abstrato."}];
+const REDACAO = [{"tema": "A santidade como fruto necessário (e não opcional) da fé em Cristo", "motivador": "\"Segui a paz com todos e a santificação, sem a qual ninguém verá o Senhor.\" (Hebreus 12.14)\n\nEm sua obra, J.C. Ryle insiste que a santidade prática não é um acréscimo dispensável à vida do cristão, mas a marca inevitável de quem foi verdadeiramente justificado pela fé. Ele adverte que uma fé que não produz santidade é uma fé morta, e que a graça que salva é também a graça que transforma.", "comando": "Com base no texto motivador e em seus conhecimentos, redija uma dissertação em prosa argumentativa discutindo a seguinte questão: a santidade prática é condição indispensável na vida do cristão ou mero acessório da fé? Apresente uma tese clara, sustente-a com argumentos, considere possíveis objeções (por exemplo, o receio de cair no legalismo ou na justificação pelas obras) e chegue a uma conclusão coerente. Dê um título ao seu texto."}, {"tema": "A luta contra o pecado: entre o legalismo e o antinomianismo", "motivador": "\"Porque, se viverdes segundo a carne, morrereis; mas, se pelo Espírito mortificardes os feitos do corpo, vivereis.\" (Romanos 8.13)\n\nRyle descreve a vida cristã como uma verdadeira batalha (\"the fight\"): há um conflito contínuo entre a carne e o Espírito. Ele critica tanto o legalismo, que reduz a santidade a regras externas, quanto o antinomianismo e certo quietismo (\"deixe e deixe Deus agir\"), que negligenciam o esforço diligente do crente sob a graça.", "comando": "Redija uma dissertação em prosa argumentativa sobre o tema: como o cristão deve buscar a santidade sem cair nos extremos do legalismo (confiança em regras e méritos) e do antinomianismo (desprezo pela obediência)? Exponha sua tese, apresente argumentos favoráveis e contrários e conclua de forma consistente. Dê um título ao seu texto."}, {"tema": "A busca da santidade numa cultura de tolerância moral", "motivador": "\"Como filhos obedientes, não vos amoldeis às paixões que tínheis anteriormente na vossa ignorância; mas, como é santo aquele que vos chamou, tornai-vos santos também vós mesmos em todo o vosso procedimento.\" (1 Pedro 1.14-15)\n\nRyle escreve num contexto em que o pecado era frequentemente minimizado. Ele começa sua obra justamente tratando da \"pecaminosidade excessiva do pecado\", convencido de que só quem enxerga a gravidade do pecado compreenderá a necessidade da santidade. Hoje, em uma cultura que muitas vezes trata questões morais como relativas, esse chamado permanece desafiador.", "comando": "Redija uma dissertação em prosa argumentativa discutindo: é possível e desejável buscar a santidade pessoal numa sociedade que tende a relativizar as questões morais? Defenda um ponto de vista, considere argumentos contrários (por exemplo, a acusação de intolerância ou de moralismo) e apresente uma conclusão fundamentada. Dê um título ao seu texto."}];
+BANCO.forEach((q,i)=>q.gid=i); // id global estável
+
+const AREAS = ["Bíblia","Símbolos de Fé","Português","Literatura","Inglês"];
+const AREA_COR = {"Bíblia":"var(--bi)","Símbolos de Fé":"var(--sf)","Português":"var(--pt)","Literatura":"var(--lt)","Inglês":"var(--en)"};
+const AREA_LABEL = {"Bíblia":"Bíblia","Símbolos de Fé":"Símbolos","Português":"Português","Literatura":"Literatura","Inglês":"Inglês"};
+const DIF_LABEL = {facil:"Fácil",media:"Média",dificil:"Difícil"};
+const K_ESTADO="ipb2027_estado", K_HIST="ipb2027_hist", K_RED="ipb2027_red";
+
+/* ============ TRILHAS DE ESTUDO (método 80/20) ============ */
+const PRESETS = [
+  {
+    id:"completo", areas:"completo", modo:"prova",
+    tag:"140 questões · modo prova", tema:"navy", emoji:"📝",
+    nome:"A Prova Completa",
+    resumo:"As 140 questões no formato oficial, das cinco disciplinas. Faça de tempos em tempos para medir onde você está e treinar o ritmo dos 150 pontos.",
+    porque:"Serve de termômetro: mostra em quais blocos você já pontua e onde precisa investir horas."
+  },
+  {
+    id:"pareto", areas:["Bíblia","Símbolos de Fé"], modo:"estudo",
+    tag:"80 questões · modo estudo", tema:"gold", emoji:"🎯",
+    nome:"Máquina de Pontos",
+    resumo:"Bíblia e Símbolos de Fé, os dois blocos que valem 80 dos 150 pontos, mais da metade da prova. Em modo estudo, com gabarito na hora, para aprender rápido.",
+    porque:"É onde cada hora estudada rende mais pontos. Meta de trabalho: 32 a 36 acertos em cada bloco."
+  },
+  {
+    id:"leves", areas:["Português","Literatura","Inglês"], modo:"estudo",
+    tag:"60 questões · modo estudo", tema:"teal", emoji:"🛡️",
+    nome:"Blindagem dos Cortes",
+    resumo:"Garanta os mínimos eliminatórios e capture pontos de baixo custo. Português exige o mínimo de 10; Literatura e Inglês não podem ser zerados.",
+    porque:"Diagnostique rápido e assegure os pontos fáceis, sem gastar horas onde o retorno é menor."
+  }
+];
+
+/* ============ CONFIGURAÇÃO DA NUVEM (Supabase) ============
+   Preencha as duas linhas abaixo com os dados do seu projeto Supabase.
+   Enquanto contiverem "COLE_AQUI", o app funciona em modo visitante
+   (o histórico fica só neste aparelho, via localStorage). */
+const SUPA_URL = "https://bxopucxiulixtehwpmte.supabase.co";
+const SUPA_KEY = "sb_publishable_rjIeAQA9zTzEazywETopnQ_mo6VUUZF";
+
+/* ============ APP ============ */
+const app = {
+  cfg:{filtro:"completo", modo:"prova", real:false},
+  estado:null,
+  cronoTimer:null,
+
+  init(){
+    // seletores home
+    document.querySelectorAll('#segFiltro button').forEach(b=>{
+      b.onclick=()=>{document.querySelectorAll('#segFiltro button').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on'); this.cfg.filtro=b.dataset.f;};
+    });
+    document.getElementById('chkReal').onchange=e=>this.cfg.real=e.target.checked;
+    // gab filter
+    document.querySelectorAll('#segGabFilter button').forEach(b=>{
+      b.onclick=()=>{document.querySelectorAll('#segGabFilter button').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on'); this.renderGabarito(b.dataset.g);};
+    });
+    this.refreshHomeButtons();
+    this.renderTracks();
+    this.renderAuth();
+    this.irHome();
+    // atalhos teclado
+    document.addEventListener('keydown',e=>{
+      if(document.getElementById('viewProva').classList.contains('hidden'))return;
+      if(e.target.tagName==='TEXTAREA')return;
+      if(e.key==='ArrowRight')this.navegar(1);
+      if(e.key==='ArrowLeft')this.navegar(-1);
+      if(['a','b','c','d','e','A','B','C','D','E'].includes(e.key)){
+        const slot="abcde".indexOf(e.key.toLowerCase());
+        const els=document.querySelectorAll('#qContainer .alt');
+        if(els[slot])els[slot].click();
+      }
+    });
+  },
+
+  setModo(m){this.cfg.modo=m;
+    document.getElementById('modeProva').classList.toggle('on',m==='prova');
+    document.getElementById('modeEstudo').classList.toggle('on',m==='estudo');},
+
+  refreshHomeButtons(){
+    const saved=localStorage.getItem(K_ESTADO);
+    ['btnContinuar','btnRecomecar','btnContinuar2'].forEach(id=>{
+      const el=document.getElementById(id); if(el)el.style.display=saved?'':'none';
+    });
+  },
+  renderTracks(){
+    const wrap=document.getElementById('tracks'); if(!wrap)return;
+    wrap.innerHTML=PRESETS.map(p=>`
+      <div class="track track-${p.tema}">
+        <div class="track-top">
+          <span class="track-emoji">${p.emoji}</span>
+          <span class="track-tag">${p.tag}</span>
+        </div>
+        <h3 class="serif track-nome">${p.nome}</h3>
+        <p class="track-resumo">${this.esc(p.resumo)}</p>
+        <div class="track-porque"><b>Por quê:</b> ${this.esc(p.porque)}</div>
+        <button class="btn-primary track-btn" onclick="app.startPreset('${p.id}')">Começar ▸</button>
+      </div>`).join('');
+  },
+
+  /* ---------- geração da prova ---------- */
+  filtroAreas(filtro){
+    if(filtro==='completo')return AREAS.slice();
+    if(Array.isArray(filtro))return filtro.slice();
+    return [filtro];
+  },
+  filtroLabel(filtro){
+    if(filtro==='completo')return 'Simulado completo';
+    if(Array.isArray(filtro))return filtro.map(a=>AREA_LABEL[a]||a).join(' + ');
+    return AREA_LABEL[filtro]||filtro;
+  },
+  gerarProva(filtro){
+    const areas=this.filtroAreas(filtro);
+    let idx=BANCO.map(q=>q.gid).filter(g=>areas.includes(BANCO[g].A));
+    // embaralha tudo
+    this.shuffle(idx);
+    // alvos balanceados de posição da alternativa correta (A..E)
+    let alvos=idx.map((_,i)=>i%5); this.shuffle(alvos);
+    let perm={};
+    idx.forEach((g,i)=>{ perm[g]=this.montarPerm(BANCO[g].C, alvos[i]); });
+    return {ordem:idx, perm};
+  },
+  montarPerm(correta,alvo){
+    // slots[displaySlot] = índice da alternativa original
+    let slots=new Array(5).fill(null);
+    slots[alvo]=correta;
+    let outras=[0,1,2,3,4].filter(x=>x!==correta); this.shuffle(outras);
+    let k=0; for(let s=0;s<5;s++){ if(slots[s]===null){slots[s]=outras[k++];} }
+    return slots;
+  },
+  shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;},
+
+  novaProva(){
+    const {ordem,perm}=this.gerarProva(this.cfg.filtro);
+    let limite=0;
+    if(this.cfg.real){
+      if(this.cfg.filtro==='completo')limite=6*3600;
+      else limite=3*3600;
+    }
+    this.estado={
+      modo:this.cfg.modo, filtro:this.cfg.filtro, real:this.cfg.real,
+      ordem, perm, respostas:{}, marcadas:[], revelado:[], dicas:[], fontes:[], eliminadas:{},
+      atual:0, tempo:0, limite, cronoOn:false, finalizado:false, quando:Date.now()
+    };
+    this.salvar();
+  },
+
+  iniciar(){ this.novaProva(); this.abrirProva();
+    if(this.estado.real){this.estado.cronoOn=true; this.startCrono();}
+  },
+  startPreset(id){
+    const p=PRESETS.find(x=>x.id===id); if(!p)return;
+    this.cfg.filtro=p.areas; this.cfg.modo=p.modo; this.cfg.real=!!p.real;
+    // reflete nos controles manuais, se aplicável
+    if(typeof p.areas==='string'){
+      document.querySelectorAll('#segFiltro button').forEach(b=>b.classList.toggle('on',b.dataset.f===p.areas));
+    }
+    this.setModo(p.modo);
+    const chk=document.getElementById('chkReal'); if(chk)chk.checked=!!p.real;
+    this.novaProva(); this.abrirProva();
+    if(this.estado.real){this.estado.cronoOn=true; this.startCrono();}
+  },
+  novoSimulado(){ this.cfg.filtro=this.estado?this.estado.filtro:this.cfg.filtro;
+    this.cfg.modo=this.estado?this.estado.modo:this.cfg.modo;
+    this.cfg.real=this.estado?this.estado.real:this.cfg.real;
+    this.novaProva(); this.abrirProva(); this.toast('Novo simulado gerado — questões e alternativas embaralhadas.');
+    if(this.estado.real){this.estado.cronoOn=true; this.startCrono();}
+  },
+  continuar(){ const s=localStorage.getItem(K_ESTADO); if(!s){this.toast('Nenhum simulado salvo.');return;}
+    this.estado=JSON.parse(s);
+    if(this.estado.finalizado){this.corrigirEExibir();}
+    else{this.abrirProva(); if(this.estado.cronoOn)this.startCrono();}
+  },
+  recomecar(){ if(confirm('Isto apagará o simulado em andamento (respostas, tempo e marcações). Deseja continuar?')){
+      localStorage.removeItem(K_ESTADO); this.estado=null; this.stopCrono();
+      this.refreshHomeButtons(); this.irHome(); this.toast('Simulado apagado.');
+  }},
+
+  /* ---------- navegação de telas ---------- */
+  _show(id){['viewHome','viewProva','viewResultado','viewDesempenho','viewCobertura','viewRedacao']
+      .forEach(v=>document.getElementById(v).classList.toggle('hidden',v!==id));
+    document.getElementById('stickyBar').style.display=(id==='viewProva')?'':'none';
+    window.scrollTo(0,0);
+  },
+  irHome(){this._show('viewHome');this.refreshHomeButtons();this.stopCrono();},
+  irDesempenho(){this._show('viewDesempenho');this.renderDesempenho();},
+  irCobertura(){this._show('viewCobertura');this.renderCobertura();},
+  irRedacao(){this._show('viewRedacao');this.renderRedacao();},
+
+  abrirProva(){ this._show('viewProva');
+    document.getElementById('chipModoT').textContent = this.estado.modo==='prova'?'Modo Prova':'Modo Estudo';
+    const fl=this.filtroLabel(this.estado.filtro);
+    document.getElementById('chipFiltro').textContent=fl+' · '+this.estado.ordem.length+' questões';
+    document.getElementById('btnFinalizar').style.display=this.estado.modo==='prova'?'':'none';
+    this.renderQuestao(); this.renderNav(); this.atualizarContadores(); this.tickView();
+  },
+
+  /* ---------- render questão ---------- */
+  qAtualG(){return this.estado.ordem[this.estado.atual];},
+  renderQuestao(){
+    const g=this.qAtualG(), q=BANCO[g], perm=this.estado.perm[g];
+    const total=this.estado.ordem.length, pos=this.estado.atual;
+    const respOrig=this.estado.respostas[g]; // índice ORIGINAL escolhido
+    const marcada=this.estado.marcadas.includes(g);
+    const revelar = this.estado.finalizado || this.estado.revelado.includes(g);
+    let html=`
+    <div class="q-head">
+      <div class="q-count serif">Questão ${pos+1} <span style="color:var(--ink2);font-weight:400">de ${total}</span></div>
+      <div class="q-tags">
+        <span class="tag tag-area" style="background:${AREA_COR[q.A]}">${q.A}</span>
+        <span class="tag tag-dif">${DIF_LABEL[q.D]}</span>
+      </div>
+    </div>
+    <div class="q-body" style="border-left-color:${AREA_COR[q.A]}">
+      <div class="q-enun">${this.esc(q.Q)}</div>
+      <div class="alts">`;
+    const elim = (this.estado.eliminadas&&this.estado.eliminadas[g])||[];
+    for(let slot=0;slot<5;slot++){
+      const orig=perm[slot];
+      const sel = respOrig===orig;
+      const cortada = elim.includes(orig);
+      let cls='alt'+(sel?' sel':'')+(cortada?' elim':'');
+      if(revelar){ if(orig===q.C)cls+=' ok'; else if(sel)cls+=' no'; }
+      const clickable = !cortada;
+      html+=`<label class="${cls}" ${clickable?`onclick="app.selecionar(${g},${orig})"`:''}>
+        <span class="let">${'ABCDE'[slot]}</span><span>${this.esc(q.O[orig])}</span></label>`;
+    }
+    html+=`</div>`;
+    const dicaAberta = (this.estado.dicas||[]).includes(g);
+    const fonteAberta = (this.estado.fontes||[]).includes(g);
+    const elimUsada = elim.length>0;
+    // painel de ajudas (lifelines)
+    if(!revelar){
+      html+=`<div class="ajudas no-print">
+        <span class="ajudas-lb">Ajudas</span>
+        <button class="lifeline ${elimUsada?'used':''}" ${elimUsada?'disabled':''} onclick="app.eliminar()" title="Elimina duas alternativas erradas">
+          <b>50/50</b><small>${elimUsada?'usada':'eliminar 2'}</small></button>
+        <button class="lifeline ${dicaAberta?'on':''}" onclick="app.verDica()" title="Uma pista que orienta o raciocínio">
+          <b>💡 Dica</b><small>${dicaAberta?'ocultar':'pista'}</small></button>
+        <button class="lifeline ${fonteAberta?'on':''}" onclick="app.verFonte()" title="Onde estudar este conteúdo">
+          <b>📖 Fonte</b><small>${fonteAberta?'ocultar':'onde estudar'}</small></button>
+        <button class="lifeline gold" onclick="app.verResposta()" title="Revela o gabarito comentado">
+          <b>✓ Resposta</b><small>gabarito</small></button>
+      </div>`;
+    }
+    if(dicaAberta && !revelar) html+=`<div class="dica-box"><span class="dica-tag">💡 Dica</span><span>${this.esc(q.H||'')}</span></div>`;
+    if(fonteAberta && !revelar){
+      let refK = q.A==='Bíblia'?'Passagem para consultar':q.A==='Símbolos de Fé'?'Nos Símbolos de Fé':'Onde revisar';
+      html+=`<div class="fonte-box"><span class="fonte-tag">📖 Fonte</span><span><b>${refK}:</b> ${this.esc(q.R)} &nbsp;·&nbsp; <span style="color:var(--ink2)">Tópico: ${this.esc(q.T)}</span></span></div>`;
+    }
+    if(revelar) html+=this.blocoExplicacao(q,respOrig);
+    html+=`</div>
+    <div class="q-actions no-print">
+      <button class="btn-soft" onclick="app.navegar(-1)" ${pos===0?'disabled':''}>‹ Anterior</button>
+      <button class="mark-flag btn-ghost ${marcada?'on':''}" onclick="app.marcar()">${marcada?'✓ Marcada':'⚑ Revisar'}</button>
+      ${revelar && !this.estado.finalizado?`<span class="revelou-tag">resposta revelada</span>`:''}
+      <span class="grow"></span>
+      <button class="btn-primary" onclick="app.navegar(1)" ${pos===total-1?'disabled':''}>Próxima ›</button>
+    </div>`;
+    document.getElementById('qContainer').innerHTML=html;
+    document.getElementById('progBar').style.width=(100*Object.keys(this.estado.respostas).length/total)+'%';
+  },
+  blocoExplicacao(q,respOrig){
+    const acertou = respOrig===q.C;
+    const emBranco = respOrig===undefined;
+    const letCorreta = this.letraExibida(q.gid,q.C);
+    const letResp = emBranco?'—':this.letraExibida(q.gid,respOrig);
+    const verdict = emBranco?'<span class="verdict">EM BRANCO</span>'
+      : acertou?'<span class="verdict ok">CORRETA ✓</span>':'<span class="verdict no">ERRADA ✕</span>';
+    let refK = q.A==='Bíblia'?'Referência bíblica'
+      : q.A==='Símbolos de Fé'?'Símbolos de Fé' : 'Referência';
+    return `<div class="exp">
+      ${verdict}
+      <div class="line">Sua resposta: <b>${letResp}</b> &nbsp;·&nbsp; Resposta correta: <b>${letCorreta}</b></div>
+      <div class="expl">${this.esc(q.E)}</div>
+      <div class="ref"><span class="k">${refK}:</span> ${this.esc(q.R)} &nbsp;|&nbsp; <span class="k">Tópico do edital:</span> ${this.esc(q.T)}</div>
+    </div>`;
+  },
+  letraExibida(g,orig){ const perm=this.estado.perm[g]; return 'ABCDE'[perm.indexOf(orig)]; },
+
+  selecionar(g,orig){
+    if(this.estado.finalizado)return;
+    if(this.estado.revelado.includes(g))return;
+    this.estado.respostas[g]=orig; this.salvar();
+    this.renderQuestao(); this.renderNav(); this.atualizarContadores();
+  },
+  verDica(){ const g=this.qAtualG();
+    if(!this.estado.dicas)this.estado.dicas=[];
+    const i=this.estado.dicas.indexOf(g);
+    if(i>=0)this.estado.dicas.splice(i,1); else this.estado.dicas.push(g);
+    this.salvar(); this.renderQuestao();
+  },
+  verFonte(){ const g=this.qAtualG();
+    if(!this.estado.fontes)this.estado.fontes=[];
+    const i=this.estado.fontes.indexOf(g);
+    if(i>=0)this.estado.fontes.splice(i,1); else this.estado.fontes.push(g);
+    this.salvar(); this.renderQuestao();
+  },
+  eliminar(){ const g=this.qAtualG(), q=BANCO[g];
+    if(!this.estado.eliminadas)this.estado.eliminadas={};
+    if(this.estado.eliminadas[g])return; // 50/50 só uma vez
+    // escolhe 2 alternativas erradas para cortar (mantém a correta)
+    const erradas=[0,1,2,3,4].filter(o=>o!==q.C);
+    this.shuffle(erradas);
+    this.estado.eliminadas[g]=erradas.slice(0,2);
+    // se a resposta marcada foi cortada, limpa a marcação
+    if(this.estado.eliminadas[g].includes(this.estado.respostas[g]))delete this.estado.respostas[g];
+    this.salvar(); this.renderQuestao(); this.renderNav(); this.atualizarContadores();
+    this.toast('Duas alternativas eliminadas. Boa sorte!');
+  },
+  verResposta(){ const g=this.qAtualG();
+    if(!this.estado.revelado.includes(g))this.estado.revelado.push(g);
+    this.salvar(); this.renderQuestao(); this.renderNav();
+  },
+  marcar(){ const g=this.qAtualG(); const i=this.estado.marcadas.indexOf(g);
+    if(i>=0)this.estado.marcadas.splice(i,1); else this.estado.marcadas.push(g);
+    this.salvar(); this.renderQuestao(); this.renderNav(); this.atualizarContadores();
+  },
+  navegar(d){ const n=this.estado.atual+d; if(n<0||n>=this.estado.ordem.length)return;
+    this.estado.atual=n; this.salvar(); this.renderQuestao(); this.renderNav();
+    document.getElementById('viewProva').scrollIntoView?.({behavior:'smooth',block:'start'});
+  },
+  irPara(pos){ this.estado.atual=pos; this.salvar(); this.renderQuestao(); this.renderNav();
+    document.getElementById('viewProva').scrollIntoView?.({behavior:'smooth',block:'start'});
+  },
+
+  renderNav(){
+    const grid=document.getElementById('navGrid'); let h='';
+    this.estado.ordem.forEach((g,i)=>{
+      let cls='';
+      const answered=this.estado.respostas[g]!==undefined;
+      if(this.estado.finalizado){
+        if(answered)cls=this.estado.respostas[g]===BANCO[g].C?'ok':'no'; else cls='blank';
+      } else if(answered) cls='answered';
+      if(this.estado.marcadas.includes(g))cls+=' marked';
+      if(i===this.estado.atual)cls+=' current';
+      h+=`<button class="${cls}" onclick="app.irPara(${i})">${i+1}</button>`;
+    });
+    grid.innerHTML=h;
+  },
+  atualizarContadores(){
+    const total=this.estado.ordem.length;
+    const resp=Object.keys(this.estado.respostas).length;
+    document.getElementById('cResp').textContent=resp;
+    document.getElementById('cBranco').textContent=total-resp;
+    document.getElementById('cMark').textContent=this.estado.marcadas.length;
+  },
+
+  /* ---------- cronômetro ---------- */
+  toggleCrono(){ if(!this.estado){this.toast('Inicie um simulado primeiro.');return;}
+    this.estado.cronoOn=!this.estado.cronoOn;
+    if(this.estado.cronoOn)this.startCrono(); else this.stopCrono();
+    this.salvar();
+  },
+  startCrono(){ this.stopCrono(); this.estado.cronoOn=true;
+    document.getElementById('btnCrono').textContent='Pausar';
+    this.cronoTimer=setInterval(()=>{
+      this.estado.tempo++;
+      if(this.estado.real && this.estado.tempo>=this.estado.limite){
+        this.estado.tempo=this.estado.limite; this.tickView();
+        this.stopCrono(); this.toast('Tempo esgotado. Finalizando…');
+        setTimeout(()=>this.finalizarForcado(),900); return;
+      }
+      if(this.estado.tempo%5===0)this.salvar();
+      this.tickView();
+    },1000);
+  },
+  stopCrono(){ if(this.cronoTimer){clearInterval(this.cronoTimer);this.cronoTimer=null;}
+    const b=document.getElementById('btnCrono'); if(b)b.textContent='Iniciar';
+    if(this.estado)this.estado.cronoOn=false;
+  },
+  resetCrono(){ if(!this.estado)return; this.estado.tempo=0; this.stopCrono(); this.tickView(); this.salvar();},
+  tickView(){
+    if(!this.estado)return;
+    const el=document.getElementById('timer');
+    let s = this.estado.real ? Math.max(0,this.estado.limite-this.estado.tempo) : this.estado.tempo;
+    const hh=Math.floor(s/3600), mm=Math.floor((s%3600)/60), ss=s%60;
+    el.textContent=(hh>0?String(hh).padStart(2,'0')+':':'')+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+    el.classList.remove('warn','crit');
+    if(this.estado.real){ if(s<=300)el.classList.add('crit'); else if(s<=900)el.classList.add('warn'); }
+  },
+
+  /* ---------- finalização e correção ---------- */
+  finalizar(){
+    const total=this.estado.ordem.length;
+    const branco=total-Object.keys(this.estado.respostas).length;
+    if(branco>0){
+      if(!confirm(`Existem ${branco} ${branco===1?'questão sem resposta':'questões sem resposta'}. Deseja realmente finalizar?`))return;
+    } else if(!confirm('Deseja finalizar e corrigir o simulado?'))return;
+    this.finalizarForcado();
+  },
+  finalizarForcado(){
+    this.stopCrono(); this.estado.finalizado=true; this.estado.cronoOn=false;
+    this.salvarHistorico(); this.salvar(); this.corrigirEExibir();
+  },
+  calcular(){
+    // pontos por área (só das áreas presentes na prova)
+    const stats={}; AREAS.forEach(a=>stats[a]={total:0,acertos:0,erros:0,branco:0});
+    let acertos=0,erros=0,branco=0;
+    const elimMap=this.estado.eliminadas||{}, dicas=this.estado.dicas||[], fontes=this.estado.fontes||[], revel=this.estado.revelado||[];
+    let usoElim=0,usoDica=0,usoFonte=0,usoResp=0,dominio=0;
+    this.estado.ordem.forEach(g=>{
+      const q=BANCO[g]; stats[q.A].total++;
+      const r=this.estado.respostas[g];
+      const usouAlgo = (elimMap[g]&&elimMap[g].length)||dicas.includes(g)||fontes.includes(g)||revel.includes(g);
+      if(elimMap[g]&&elimMap[g].length)usoElim++;
+      if(dicas.includes(g))usoDica++;
+      if(fontes.includes(g))usoFonte++;
+      if(revel.includes(g))usoResp++;
+      if(r===undefined){branco++;stats[q.A].branco++;}
+      else if(r===q.C){acertos++;stats[q.A].acertos++; if(!usouAlgo)dominio++;}
+      else {erros++;stats[q.A].erros++;}
+    });
+    const total=this.estado.ordem.length;
+    const ajudas={elim:usoElim,dica:usoDica,fonte:usoFonte,resp:usoResp,total:usoElim+usoDica+usoFonte+usoResp};
+    return {stats,acertos,erros,branco,total,pct:total?Math.round(100*acertos/total):0,ajudas,dominio};
+  },
+  corrigirEExibir(){
+    const c=this.calcular(); this._show('viewResultado'); this.stopCrono();
+    // ring
+    const ring=document.getElementById('ring'); ring.style.setProperty('--p',c.pct);
+    document.getElementById('ringPct').textContent=c.pct+'%';
+    // veredito
+    const vw=document.getElementById('verdictWrap');
+    if(this.estado.filtro==='completo'){
+      const v=this.veredito(c);
+      vw.innerHTML=`<span class="verd-badge ${v.aprovado?'ap':'re'}">${v.aprovado?'Situação: dentro dos critérios ✓':'Situação: reprovaria ✕'}</span>
+        <div style="font-size:.85rem;color:var(--ink2);margin-top:6px">${v.resumo}</div>`;
+    } else {
+      vw.innerHTML=`<span class="verd-badge ap" style="background:var(--paper2);color:var(--navy)">Treino: ${this.filtroLabel(this.estado.filtro)}</span>
+        <div style="font-size:.85rem;color:var(--ink2);margin-top:6px">Os critérios globais de aprovação valem para o simulado completo. Aqui vale o corte de cada disciplina, mostrado abaixo.</div>`;
+    }
+    // métricas gerais
+    document.getElementById('metricsGeral').innerHTML=`
+      <div class="metric navy"><div class="v">${c.acertos}/${c.total}</div><div class="l">Acertos</div></div>
+      <div class="metric good"><div class="v">${c.acertos}</div><div class="l">Corretas</div></div>
+      <div class="metric bad"><div class="v">${c.erros}</div><div class="l">Erradas</div></div>
+      <div class="metric"><div class="v">${c.branco}</div><div class="l">Em branco</div></div>
+      <div class="metric navy"><div class="v">${c.pct}%</div><div class="l">Aproveitamento</div></div>`;
+    // card de gamificação: domínio pleno + ajudas
+    const gw=document.getElementById('gamifWrap');
+    if(gw){
+      const dPct=c.acertos?Math.round(100*c.dominio/c.total):0;
+      const a=c.ajudas;
+      let sel='';
+      if(c.dominio===c.total && c.total>0) sel='Nível Mestre: acertou tudo sem usar ajuda alguma. Impressionante.';
+      else if(a.total===0) sel='Nível Independente: você não recorreu a nenhuma ajuda neste simulado.';
+      else if(c.dominio>=Math.round(0.7*c.total)) sel='Bom domínio: a maior parte dos acertos veio sem ajuda.';
+      else sel='Use as ajudas para aprender agora e vá soltando-as aos poucos; na prova real elas não existem.';
+      gw.innerHTML=`
+        <div class="gamif">
+          <div class="gamif-hero">
+            <div class="gamif-big">${c.dominio}<span>/${c.total}</span></div>
+            <div class="gamif-cap">Domínio pleno<br><small>acertos sem nenhuma ajuda (${dPct}%)</small></div>
+          </div>
+          <div class="gamif-aids">
+            <div class="aid"><b>${a.elim}</b><small>50/50</small></div>
+            <div class="aid"><b>${a.dica}</b><small>💡 dicas</small></div>
+            <div class="aid"><b>${a.fonte}</b><small>📖 fontes</small></div>
+            <div class="aid"><b>${a.resp}</b><small>✓ respostas</small></div>
+          </div>
+          <div class="gamif-msg">${sel}</div>
+        </div>`;
+    }
+    // por disciplina
+    let db='';
+    AREAS.filter(a=>c.stats[a].total>0).forEach(a=>{
+      const s=c.stats[a]; const p=Math.round(100*s.acertos/s.total);
+      const cor=p>=75?'var(--good)':p>=50?'var(--gold)':'var(--bad)';
+      db+=`<tr>
+        <td><span class="area-pill" style="background:${AREA_COR[a]}">${AREA_LABEL[a]}</span></td>
+        <td>${s.acertos}/${s.total}</td>
+        <td><div style="display:flex;align-items:center;gap:8px"><div class="bar"><i style="width:${p}%;background:${cor}"></i></div><b class="mono" style="font-size:.85rem">${p}%</b></div></td>
+        <td class="num">${s.acertos} pt</td></tr>`;
+    });
+    document.getElementById('discBody').innerHTML=db;
+    this.renderCriterios(c);
+    this.renderErros(c);
+    this.renderGabarito('todas');
+    document.querySelectorAll('#segGabFilter button').forEach((b,i)=>b.classList.toggle('on',i===0));
+  },
+  veredito(c){
+    // aplica critérios oficiais usando pontos objetivos (140) + estimativa redação
+    const s=c.stats; const objTotal=c.acertos; // 1 pt por questão
+    const falhas=[];
+    if(s["Bíblia"].total && s["Bíblia"].acertos<20)falhas.push("menos de 20 em Bíblia");
+    if(s["Português"].total && s["Português"].acertos<10)falhas.push("menos de 10 em Português");
+    ["Símbolos de Fé","Literatura","Inglês"].forEach(a=>{ if(s[a].total && s[a].acertos===0)falhas.push("zerou "+AREA_LABEL[a]); });
+    // 75/150: objetivo + redação(0..10)
+    let resumoTotal;
+    if(objTotal>=75){resumoTotal=`Você já soma ${objTotal} pontos objetivos (de 140); o mínimo de 75/150 está garantido antes mesmo da redação.`;}
+    else if(objTotal+10<75){falhas.push(`total abaixo de 75 (mesmo com redação nota 10, chegaria a ${objTotal+10})`);resumoTotal=`Com ${objTotal} pontos objetivos, nem a nota máxima na redação alcançaria os 75/150.`;}
+    else {resumoTotal=`Você tem ${objTotal} pontos objetivos; precisará de ao menos ${75-objTotal} na redação (de 10) para atingir 75/150.`;}
+    const aprovado=falhas.length===0 && objTotal+10>=75 && objTotal>=(75-10) ;
+    const realmenteReprova = falhas.length>0;
+    return {aprovado:!realmenteReprova, resumo: resumoTotal + (falhas.length?` Pontos críticos: ${falhas.join('; ')}.`:' Nenhum critério eliminatório objetivo foi violado.')};
+  },
+  renderCriterios(c){
+    const s=c.stats; const obj=c.acertos; const ul=document.getElementById('critList');
+    const item=(txt,status,detail)=>{
+      const ic=status==='ok'?'✓':status==='no'?'✕':'–';
+      return `<li><span class="ic ${status}">${ic}</span><span><b>${txt}</b>${detail?` — <span style="color:var(--ink2)">${detail}</span>`:''}</span></li>`;
+    };
+    let h='';
+    // I - 75/150
+    if(this.estado.filtro==='completo'){
+      let st = obj>=75?'ok':(obj+10<75?'no':'na');
+      h+=item('Mínimo de 75 pontos em 150', st,
+        st==='ok'?`${obj} objetivos já bastam`:st==='no'?`${obj} objetivos + redação < 75`:`${obj} objetivos; falta ${75-obj} na redação`);
+    }
+    // II Bíblia
+    if(s["Bíblia"].total)h+=item('Mínimo de 20 em Bíblia', s["Bíblia"].acertos>=20?'ok':'no', `${s["Bíblia"].acertos}/40`);
+    // III Português
+    if(s["Português"].total)h+=item('Mínimo de 10 em Português', s["Português"].acertos>=10?'ok':'no', `${s["Português"].acertos}/20`);
+    // V não zerar
+    ["Símbolos de Fé","Literatura","Inglês"].forEach(a=>{ if(s[a].total)
+      h+=item('Não zerar '+AREA_LABEL[a], s[a].acertos>0?'ok':'no', `${s[a].acertos}/${s[a].total}`); });
+    // IV redação
+    if(this.estado.filtro==='completo')h+=item('Mínimo de 5 na Redação','na','corrigida manualmente');
+    ul.innerHTML=h;
+  },
+  renderErros(c){
+    const box=document.getElementById('errBox');
+    // agrupa erros por área e por tópico
+    const porArea={}, porTopico={};
+    this.estado.ordem.forEach(g=>{
+      const q=BANCO[g],r=this.estado.respostas[g];
+      const errou = r!==undefined && r!==q.C; const branco=r===undefined;
+      if(errou||branco){
+        porArea[q.A]=(porArea[q.A]||0)+1;
+        const key=q.A+' · '+q.T; porTopico[key]=(porTopico[key]||0)+1;
+      }
+    });
+    const totalErr=Object.values(porArea).reduce((a,b)=>a+b,0);
+    if(totalErr===0){ box.innerHTML=`<h3 class="serif">Análise de erros</h3><p style="margin:0;color:#7a4a2a">Excelente! Nenhuma questão errada ou em branco. Refaça em Modo Prova Real para consolidar o ritmo.</p>`; return; }
+    const topics=Object.entries(porTopico).sort((a,b)=>b[1]-a[1]);
+    const areasLine=Object.entries(porArea).sort((a,b)=>b[1]-a[1])
+      .map(([a,n])=>`${n} de ${AREA_LABEL[a]}`).join(', ');
+    let h=`<h3 class="serif">Análise de erros</h3>
+      <p style="margin:0 0 10px;font-size:.9rem;color:#8a4526">Você errou ou deixou em branco <b>${totalErr}</b> ${totalErr===1?'questão':'questões'}: ${areasLine}.</p>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:#9c3d16;font-weight:700;margin-bottom:6px">Pontos que precisam de revisão</div>`;
+    topics.slice(0,8).forEach(([t,n],i)=>{
+      const pri = i===0?'alta':(n>=2?'media':'baixa');
+      h+=`<div style="padding:5px 0;font-size:.92rem"><span class="pri ${pri}">${pri}</span>${this.esc(t)} <b style="color:#9c3d16">(${n})</b></div>`;
+    });
+    box.innerHTML=h;
+  },
+  renderGabarito(filtro){
+    const cont=document.getElementById('gabList'); let h='';
+    let n=0;
+    this.estado.ordem.forEach((g,pos)=>{
+      const q=BANCO[g],r=this.estado.respostas[g];
+      const errou=r!==undefined&&r!==q.C, branco=r===undefined, acertou=r===q.C;
+      if(filtro==='erradas'&&!errou)return;
+      if(filtro==='brancas'&&!branco)return;
+      n++;
+      const letC=this.letraExibida(g,q.C), letR=branco?'—':this.letraExibida(g,r);
+      const badge = branco?'<span class="verdict" style="font-size:.85rem">EM BRANCO</span>'
+        : acertou?'<span class="verdict ok" style="font-size:.85rem">CORRETA ✓</span>'
+        : '<span class="verdict no" style="font-size:.85rem">ERRADA ✕</span>';
+      const refK = q.A==='Bíblia'?'Referência bíblica':q.A==='Símbolos de Fé'?'Símbolos de Fé':'Referência';
+      h+=`<div class="exp" style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <div class="q-count serif" style="font-size:.98rem">Questão ${pos+1}
+            <span class="tag tag-area" style="background:${AREA_COR[q.A]};margin-left:6px">${AREA_LABEL[q.A]}</span>
+            <span class="tag tag-dif">${DIF_LABEL[q.D]}</span></div>
+          ${badge}
+        </div>
+        <div style="font-family:Georgia,serif;margin:8px 0;white-space:pre-wrap">${this.esc(q.Q)}</div>
+        <div class="line">Sua resposta: <b>${letR}</b> &nbsp;·&nbsp; Correta: <b>${letC}) ${this.esc(q.O[q.C])}</b></div>
+        <div class="expl">${this.esc(q.E)}</div>
+        <div class="ref"><span class="k">${refK}:</span> ${this.esc(q.R)} &nbsp;|&nbsp; <span class="k">Tópico:</span> ${this.esc(q.T)}</div>
+      </div>`;
+    });
+    if(n===0)h='<p class="empty">Nenhuma questão nesta categoria. 🎉</p>';
+    cont.innerHTML=h;
+  },
+
+  /* ---------- histórico / desempenho ---------- */
+  salvarHistorico(){
+    const c=this.calcular();
+    const discs={}; AREAS.forEach(a=>{if(c.stats[a].total)discs[a]={a:c.stats[a].acertos,t:c.stats[a].total};});
+    // tópicos fracos deste simulado
+    const topicos={};
+    this.estado.ordem.forEach(g=>{const q=BANCO[g],r=this.estado.respostas[g];
+      if(r===undefined||r!==q.C){const k=q.A+' · '+q.T;topicos[k]=(topicos[k]||0)+1;}});
+    const hist=JSON.parse(localStorage.getItem(K_HIST)||'[]');
+    hist.push({when:Date.now(),filtro:this.estado.filtro,total:c.total,acertos:c.acertos,
+      erros:c.erros,branco:c.branco,pct:c.pct,tempo:this.estado.tempo,discs,topicos,
+      dominio:c.dominio,ajudas:c.ajudas.total});
+    localStorage.setItem(K_HIST,JSON.stringify(hist.slice(-50))); cloud.push();
+  },
+  renderDesempenho(){
+    const hist=JSON.parse(localStorage.getItem(K_HIST)||'[]');
+    const evo=document.getElementById('evoWrap'), weak=document.getElementById('weakWrap'), list=document.getElementById('histList');
+    if(!hist.length){evo.innerHTML='';weak.innerHTML='';list.innerHTML='<p class="empty">Nenhum simulado finalizado ainda. Ao concluir um simulado, os resultados aparecem aqui.</p>';return;}
+    // evolução (sparkline)
+    const max=Math.max(...hist.map(h=>h.pct),1);
+    evo.innerHTML=`<div class="section-label">Evolução do aproveitamento</div>
+      <div class="spark">${hist.slice(-24).map(h=>`<i style="height:${Math.max(6,100*h.pct/max)}%" title="${h.pct}%"></i>`).join('')}</div>
+      <div style="font-size:.78rem;color:var(--ink2);margin-top:4px">${hist.length} simulado(s) · média ${Math.round(hist.reduce((a,b)=>a+b.pct,0)/hist.length)}%</div>`;
+    // tópicos mais difíceis acumulados
+    const acc={}; hist.forEach(h=>Object.entries(h.topicos||{}).forEach(([k,n])=>acc[k]=(acc[k]||0)+n));
+    const rank=Object.entries(acc).sort((a,b)=>b[1]-a[1]).slice(0,6);
+    weak.innerHTML=`<div class="section-label">Conteúdos com mais dificuldade</div>`+
+      (rank.length?`<ol style="margin:4px 0;padding-left:22px">${rank.map(([k,n])=>`<li style="margin:3px 0">${this.esc(k)} <b style="color:var(--bad)">(${n})</b></li>`).join('')}</ol>`
+        :'<p class="empty">Sem erros acumulados.</p>');
+    // lista
+    let h='<div class="section-label">Histórico</div>';
+    [...hist].reverse().forEach(x=>{
+      const d=new Date(x.when); const dt=d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      const tempo=this.fmtTempo(x.tempo);
+      const fl=this.filtroLabel(x.filtro);
+      h+=`<div class="hist-item">
+        <div class="hist-top"><div><b class="s" style="color:${x.pct>=75?'var(--good)':x.pct>=50?'var(--gold)':'var(--bad)'}">${x.pct}%</b>
+          <span style="color:var(--ink2)"> · ${x.acertos}/${x.total} · ${fl}</span></div>
+          <div class="d">${dt} · ⏱ ${tempo}</div></div>
+        <div class="hist-discs">${Object.entries(x.discs).map(([a,o])=>`<span><b>${AREA_LABEL[a]}</b> ${o.a}/${o.t}</span>`).join('')}
+          <span>Erros: ${x.erros}</span><span>Branco: ${x.branco}</span>${x.dominio!==undefined?`<span title="Acertos sem ajuda">🎯 Domínio: ${x.dominio}/${x.total}</span>`:''}${x.ajudas!==undefined?`<span title="Ajudas usadas">🛟 Ajudas: ${x.ajudas}</span>`:''}</div>
+      </div>`;
+    });
+    list.innerHTML=h;
+  },
+  limparHistorico(){ if(confirm('Apagar todo o histórico de simulados?')){localStorage.removeItem(K_HIST);cloud.push();this.renderDesempenho();this.toast('Histórico apagado.');}},
+
+  /* ---------- cobertura do edital ---------- */
+  renderCobertura(){
+    // usa a ordem da prova atual (se houver), senão ordem natural do banco
+    let ordem = (this.estado&&this.estado.ordem)?this.estado.ordem:BANCO.map(q=>q.gid);
+    const posDe={}; ordem.forEach((g,i)=>posDe[g]=i+1);
+    document.getElementById('covTotal').textContent=ordem.length;
+    let body='';
+    AREAS.forEach(a=>{
+      const topicos={};
+      ordem.forEach(g=>{const q=BANCO[g];if(q.A===a){(topicos[q.T]=topicos[q.T]||[]).push(posDe[g]);}});
+      const keys=Object.keys(topicos).sort();
+      keys.forEach((t,i)=>{
+        body+=`<tr>
+          ${i===0?`<td rowspan="${keys.length}"><span class="area-pill" style="background:${AREA_COR[a]}">${AREA_LABEL[a]}</span></td>`:''}
+          <td>${this.esc(t)}</td>
+          <td class="cov-qn">${topicos[t].sort((x,y)=>x-y).join(', ')}</td></tr>`;
+      });
+    });
+    document.getElementById('covBody').innerHTML=body;
+  },
+
+  /* ---------- redação ---------- */
+  renderRedacao(){
+    const saved=JSON.parse(localStorage.getItem(K_RED)||'{}');
+    let h='';
+    REDACAO.forEach((p,i)=>{
+      const val=saved[i]||'';
+      h+=`<div class="red-prop">
+        <div class="section-label">Proposta ${i+1}</div>
+        <h3 class="serif">${this.esc(p.tema)}</h3>
+        <div class="red-motiv">${this.esc(p.motivador)}</div>
+        <div class="red-cmd">${this.esc(p.comando)}</div>
+        <textarea id="red${i}" placeholder="Escreva sua dissertação aqui (título + texto)…" oninput="app.salvarRedacao(${i})">${this.esc(val)}</textarea>
+        <div class="red-meta"><span id="redw${i}">${this.contaPalavras(val)} palavras</span><span>Salvo automaticamente</span></div>
+      </div>`;
+    });
+    document.getElementById('redList').innerHTML=h;
+  },
+  salvarRedacao(i){ const el=document.getElementById('red'+i); const saved=JSON.parse(localStorage.getItem(K_RED)||'{}');
+    saved[i]=el.value; localStorage.setItem(K_RED,JSON.stringify(saved)); cloud.push();
+    document.getElementById('redw'+i).textContent=this.contaPalavras(el.value)+' palavras';
+  },
+  contaPalavras(t){return (t.trim().match(/\S+/g)||[]).length;},
+
+  /* ---------- conta / nuvem ---------- */
+  recarregarDoLocal(){
+    const s=localStorage.getItem(K_ESTADO);
+    this.estado = s?JSON.parse(s):null;
+    this.refreshHomeButtons();
+    // re-render da tela visível
+    if(!document.getElementById('viewProva').classList.contains('hidden') && this.estado){
+      this.abrirProva();
+    }
+    if(!document.getElementById('viewDesempenho').classList.contains('hidden')) this.renderDesempenho();
+    if(!document.getElementById('viewRedacao').classList.contains('hidden')) this.renderRedacao();
+  },
+  renderAuth(){
+    const el=document.getElementById('acctBar'); if(!el)return;
+    const priv=`<button class="acct-link" onclick="app.abrirPriv()" title="Privacidade e dados">Privacidade</button>`;
+    if(!cloud.ready){
+      el.innerHTML=`<span class="acct-note" title="Seu histórico fica salvo apenas neste aparelho">Modo visitante</span>${priv}`;
+      return;
+    }
+    if(cloud.user){
+      const u=cloud.user, nome=(u.user_metadata&&(u.user_metadata.full_name||u.user_metadata.name))||u.email||'Conta';
+      const foto=u.user_metadata&&u.user_metadata.avatar_url;
+      el.innerHTML=`<span class="acct-sync" title="Histórico sincronizado na sua conta">☁ sincronizado</span>
+        ${foto?`<img class="acct-av" src="${foto}" alt="">`:''}
+        <span class="acct-name">${this.esc(nome.split(' ')[0])}</span>
+        <button class="acct-link" onclick="cloud.logout()">Sair</button>${priv}`;
+    } else {
+      el.innerHTML=`<button class="acct-google" onclick="cloud.login()">
+        <svg width="15" height="15" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5h-1.9V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-2.1 14.1-5.5l-6.5-5.5c-2 1.5-4.7 2.5-7.6 2.5-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.5 5.5c-.5.4 6.8-4.9 6.8-15 0-1.3-.1-2.3-.4-3.5z"/></svg>
+        Entrar com Google</button>
+        <span class="acct-note" title="Sem login, o histórico fica só neste aparelho">visitante</span>${priv}`;
+    }
+  },
+  abrirPriv(){
+    const logado=cloud.ready&&cloud.user;
+    document.getElementById('privBody').innerHTML=`
+      <p>Este simulado é um material de estudo gratuito. O funcionamento dos seus dados depende de como você usa:</p>
+      <p><b>Modo visitante (sem login):</b> suas respostas, seu histórico e sua redação ficam salvos <b>somente neste aparelho</b> (no armazenamento do próprio navegador). Nada é enviado para servidor nenhum. Se você limpar o navegador ou trocar de aparelho, esses dados se perdem.</p>
+      <p><b>Com login pelo Google:</b> além de ficarem neste aparelho, seu histórico e progresso são salvos na sua conta (via Supabase), para acompanharem você em outros aparelhos. Guardamos apenas o necessário: um identificador da sua conta Google, seu nome e e-mail para exibição, e os dados do simulado (respostas, notas, histórico, redação). Não há anúncios e seus dados não são vendidos nem compartilhados.</p>
+      <p><b>Seus direitos (LGPD):</b> você pode apagar tudo a qualquer momento no botão abaixo. Isso remove seu histórico da nuvem e encerra a sessão. ${logado?'':'<i>(Entre com o Google para gerenciar os dados salvos na nuvem.)</i>'}</p>`;
+    document.getElementById('privBg').classList.add('show');
+  },
+  fecharPriv(){ document.getElementById('privBg').classList.remove('show'); },
+
+  /* ---------- util ---------- */
+  salvar(){ if(this.estado){localStorage.setItem(K_ESTADO,JSON.stringify(this.estado));} cloud.push(); },
+  fmtTempo(s){const m=Math.floor(s/60),ss=s%60,h=Math.floor(m/60);return (h>0?h+'h':'')+(m%60)+'min'+(h>0?'':' '+ss+'s');},
+  esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));},
+  toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+    clearTimeout(this._tt);this._tt=setTimeout(()=>t.classList.remove('show'),2600);},
+};
+
+/* ============ NUVEM (Supabase) ============ */
+const cloud = {
+  sb:null, user:null, ready:false, _t:null,
+  configurado(){ return typeof SUPA_URL==='string' && SUPA_URL.indexOf('COLE_AQUI')<0 && SUPA_KEY.indexOf('COLE_AQUI')<0; },
+  init(){
+    if(!window.supabase || !this.configurado()){ this.ready=false; app.renderAuth(); return; }
+    try{ this.sb=window.supabase.createClient(SUPA_URL,SUPA_KEY); this.ready=true; }
+    catch(e){ this.ready=false; app.renderAuth(); return; }
+    this.sb.auth.getSession().then(({data})=>this.setUser(data&&data.session?data.session.user:null))
+      .catch(()=>this.setUser(null));
+    this.sb.auth.onAuthStateChange((_ev,session)=>this.setUser(session?session.user:null));
+    app.renderAuth();
+  },
+  async login(){ if(!this.sb)return;
+    try{ await this.sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}}); }
+    catch(e){ app.toast('Não consegui abrir o login do Google.'); }
+  },
+  async logout(){ if(!this.sb)return; try{ await this.sb.auth.signOut(); }catch(e){} this.setUser(null); },
+  async setUser(u){
+    const antes=this.user&&this.user.id;
+    this.user=u||null; app.renderAuth();
+    if(this.user && this.user.id!==antes){ await this.pull(); }
+  },
+  async pull(){
+    if(!this.sb||!this.user)return;
+    try{
+      const {data,error}=await this.sb.from('progresso').select('payload').eq('user_id',this.user.id).maybeSingle();
+      if(error)throw error;
+      if(data&&data.payload){
+        const p=data.payload;
+        if(p.estado!==undefined){ if(p.estado)localStorage.setItem(K_ESTADO,JSON.stringify(p.estado)); else localStorage.removeItem(K_ESTADO); }
+        if(p.hist!==undefined) localStorage.setItem(K_HIST,JSON.stringify(p.hist||[]));
+        if(p.red!==undefined) localStorage.setItem(K_RED,JSON.stringify(p.red||{}));
+        app.recarregarDoLocal();
+        app.toast('Histórico sincronizado da sua conta.');
+      } else {
+        await this.push(true); // nuvem vazia: sobe o que já existe neste aparelho
+      }
+    }catch(e){ app.toast('Não consegui carregar seu histórico da nuvem.'); }
+  },
+  push(agora){
+    if(!this.sb||!this.user)return;
+    clearTimeout(this._t);
+    const run=async()=>{
+      const payload={
+        estado:JSON.parse(localStorage.getItem(K_ESTADO)||'null'),
+        hist:JSON.parse(localStorage.getItem(K_HIST)||'[]'),
+        red:JSON.parse(localStorage.getItem(K_RED)||'{}')
+      };
+      try{ await this.sb.from('progresso').upsert({user_id:this.user.id,payload,updated_at:new Date().toISOString()}); }catch(e){}
+    };
+    if(agora)return run();
+    this._t=setTimeout(run,1500);
+  },
+  async apagarDados(){
+    if(!this.ready||!this.user){ app.toast('Entre com o Google para gerenciar os dados na nuvem.'); return; }
+    if(!confirm('Isso vai apagar seu histórico salvo na nuvem e neste aparelho, e encerrar a sessão. Deseja continuar?'))return;
+    try{ await this.sb.from('progresso').delete().eq('user_id',this.user.id); }catch(e){}
+    try{ await this.sb.auth.signOut(); }catch(e){}
+    this.user=null;
+    localStorage.removeItem(K_HIST); localStorage.removeItem(K_ESTADO); localStorage.removeItem(K_RED);
+    app.estado=null; app.renderAuth(); app.refreshHomeButtons(); app.fecharPriv();
+    if(!document.getElementById('viewDesempenho').classList.contains('hidden'))app.renderDesempenho();
+    app.toast('Seus dados foram apagados.');
+  }
+};
+
+window.app = app; window.cloud = cloud; // acessíveis aos manipuladores inline em todos os navegadores
+window.addEventListener('DOMContentLoaded',()=>{ app.init(); cloud.init(); });
+</script>
+</body>
+</html>
