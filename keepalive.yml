@@ -1,0 +1,14 @@
+name: Manter Supabase acordado
+
+# Roda sozinho uma vez por dia e também pode ser rodado no botao "Run workflow".
+on:
+  schedule:
+    - cron: "0 12 * * *"   # todo dia as 12:00 UTC (09:00 em Brasilia)
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dar um oi para o banco do Supabase
+        run: curl -sSf "https://bxopucxiulixtehwpmte.supabase.co/rest/v1/progresso?select=user_id&limit=1" -H "apikey: sb_publishable_rjIeAQA9zTzEazywETopnQ_mo6VUUZF" -H "Authorization: Bearer sb_publishable_rjIeAQA9zTzEazywETopnQ_mo6VUUZF"
